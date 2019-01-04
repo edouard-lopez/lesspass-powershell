@@ -7,7 +7,7 @@ function New-Profile([string]$site='',[string]$login='')
       symbols = 1
       length = 16
       counter = 1
-      site = 1
-      login = 1
+      site = $site
+      login = $login
     }
 }

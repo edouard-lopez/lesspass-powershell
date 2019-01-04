@@ -14,7 +14,8 @@ Describe 'Profile' {
             @{property = "login"}
         ) {}
         It 'contains given `site` and `login` value' {
-          $profile.login | Should -Be 'my-login'
+            $profile.site | Should -Be 'site.org'
+            $profile.login | Should -Be 'my-login'
         }
     }
 }
