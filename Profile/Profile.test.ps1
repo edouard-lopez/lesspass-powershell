@@ -46,4 +46,10 @@ Describe 'Profile' {
         $profile.counter | Should -Be 2
     }
 
+    It 'create profile with given master password' {
+        ($__, $master_password) = New-Profile "site.org" "my-login" "my_master_pasword"
+
+        $master_password | Should -Be "my_master_pasword"
+    }
+
 }
