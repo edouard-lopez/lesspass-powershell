@@ -256,4 +256,21 @@ Describe 'Profile' {
         }
     }
 
+    Context "Create profile with uppercase, digits and symbols" {
+        ($profile, $__) = New-Profile "site.org" -uppercase -digits -symbols
+
+        It 'disable lowercase' {
+            $profile.lowercase | Should -Be $false
+        }
+        It 'enable uppercase' {
+            $profile.uppercase | Should -Be $true
+        }
+        It 'enable digits' {
+            $profile.digits | Should -Be $true
+        }
+        It 'enable symbols' {
+            $profile.symbols | Should -Be $true
+        }
+    }
+
 }
