@@ -1,4 +1,5 @@
-Import-Module $PSScriptRoot/Profile.psd1
+Import-Module $PSScriptRoot/Profile.psd1 -Force  # force code to be reloaded
+
 
 Describe 'Profile' {
     Context "Create default profile" {
