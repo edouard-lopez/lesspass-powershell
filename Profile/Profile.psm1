@@ -15,8 +15,6 @@ function New-Profile {
         uppercase = $uppercase -or !($no_uppercase -eq $null -or !$no_uppercase)
         digits    = $digits -or !($no_digits -eq $null -or !$no_digits)
         symbols   = $symbols -or !($no_symbols -eq $null -or !$no_symbols)
-      length = 16
-      login = $login
         length    = $length
         counter   = $counter
         site      = "$site"
