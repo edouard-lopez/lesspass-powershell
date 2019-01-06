@@ -307,8 +307,59 @@ Describe 'Profile' {
         }
     }
 
-    Context "Create profile with symbols, uppercase, lowercase and digits" {
-        ($profile, $__) = New-Profile "site.org" -symbols -uppercase -lowercase -digits
+    Context "Create profile with no lowercase" {
+        ($profile, $__) = New-Profile "site.org" -noLowercase
+
+        It 'disable lowercase' {
+            $profile.lowercase | Should -Be $false
+        }
+        It 'enable uppercase' {
+            $profile.uppercase | Should -Be $true
+        }
+        It 'enable digits' {
+            $profile.digits | Should -Be $true
+        }
+        It 'enable symbols' {
+            $profile.symbols | Should -Be $true
+        }
+    }
+
+    Context "Create profile with no uppercase" {
+        ($profile, $__) = New-Profile "site.org" -noUppercase
+
+        It 'enable lowercase' {
+            $profile.lowercase | Should -Be $true
+        }
+        It 'disable uppercase' {
+            $profile.uppercase | Should -Be $false
+        }
+        It 'enable digits' {
+            $profile.digits | Should -Be $true
+        }
+        It 'enable symbols' {
+            $profile.symbols | Should -Be $true
+        }
+    }
+
+    Context "Create profile with no digits" {
+        ($profile, $__) = New-Profile "site.org" -noDigits
+
+        It 'enable lowercase' {
+            $profile.lowercase | Should -Be $true
+        }
+        It 'enable uppercase' {
+            $profile.uppercase | Should -Be $true
+        }
+        It 'disable digits' {
+            $profile.digits | Should -Be $false
+        }
+        It 'enable symbols' {
+            $profile.symbols | Should -Be $true
+        }
+    }
+
+    Context "Create profile with no symbols" {
+        ($profile, $__) = New-Profile "site.org" -noSymbols
 
         It 'enable lowercase' {
             $profile.lowercase | Should -Be $true
@@ -319,8 +370,8 @@ Describe 'Profile' {
         It 'enable digits' {
             $profile.digits | Should -Be $true
         }
-        It 'enable symbols' {
-            $profile.symbols | Should -Be $true
+        It 'disable symbols' {
+            $profile.symbols | Should -Be $false
         }
     }
 
