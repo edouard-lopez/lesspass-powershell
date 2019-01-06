@@ -100,4 +100,20 @@ Describe 'Profile' {
             $profile.symbols | Should -Be $false
         }
     }
+    Context "Create profile with symbols" {
+        ($profile, $__) = New-Profile "site.org" -s
+
+        It 'disable lowercase' {
+            $profile.lowercase | Should -Be $false
+        }
+        It 'enable uppercase' {
+            $profile.uppercase | Should -Be $false
+        }
+        It 'disable digits' {
+            $profile.digits | Should -Be $false
+        }
+        It 'disable symbols' {
+            $profile.symbols | Should -Be $true
+        }
+    }
 }
