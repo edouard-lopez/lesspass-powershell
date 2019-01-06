@@ -34,4 +34,10 @@ Describe 'Profile' {
         $profile.login | Should -Be ''
     }
 
+    It 'create profile with a given length' {
+        ($profile, $__) = New-Profile "site.org" -length 8
+
+        $profile.Length | Should -Be 8
+    }
+
 }

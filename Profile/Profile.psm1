@@ -3,6 +3,7 @@ function New-Profile {
         $site,
         $login,
         $master_password,
+        $length=1,
     )
     [PSCustomObject]@{
       lowercase = 1
@@ -12,6 +13,7 @@ function New-Profile {
       length = 16
       counter = 1
       login = $login
+        length    = $length
         site      = "$site"
         login     = "$login"
     }
