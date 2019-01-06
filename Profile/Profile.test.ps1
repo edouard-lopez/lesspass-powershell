@@ -40,4 +40,10 @@ Describe 'Profile' {
         $profile.Length | Should -Be 8
     }
 
+    It 'create profile with a given counter' {
+        ($profile, $__) = New-Profile "site.org" -counter 2
+
+        $profile.counter | Should -Be 2
+    }
+
 }
