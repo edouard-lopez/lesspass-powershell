@@ -20,7 +20,10 @@ Describe 'Profile' {
             ($profile | Get-Member -MemberType NoteProperty).Name | should -Contain ($property)
         }
 
+        It 'contains given `site` value' {
             $profile.site | Should -Be 'site.org'
+        }
+        It 'contains given `login` value' {
             $profile.login | Should -Be 'my-login'
         }
     }
