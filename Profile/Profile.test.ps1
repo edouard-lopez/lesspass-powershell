@@ -53,7 +53,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with lowercase" {
-        ($profile, $__) = New-Profile "site.org" -l
+        ($profile, $__) = New-Profile "site.org" -lowercase
 
         It 'enable lowercase' {
             $profile.lowercase | Should -Be $true
@@ -69,7 +69,7 @@ Describe 'Profile' {
         }
     }
     Context "Create profile with uppercase" {
-        ($profile, $__) = New-Profile "site.org" -u
+        ($profile, $__) = New-Profile "site.org" -uppercase
 
         It 'disable lowercase' {
             $profile.lowercase | Should -Be $false
@@ -85,7 +85,7 @@ Describe 'Profile' {
         }
     }
     Context "Create profile with digits" {
-        ($profile, $__) = New-Profile "site.org" -d
+        ($profile, $__) = New-Profile "site.org" -digits
 
         It 'disable lowercase' {
             $profile.lowercase | Should -Be $false
@@ -101,7 +101,7 @@ Describe 'Profile' {
         }
     }
     Context "Create profile with symbols" {
-        ($profile, $__) = New-Profile "site.org" -s
+        ($profile, $__) = New-Profile "site.org" -symbols
 
         It 'disable lowercase' {
             $profile.lowercase | Should -Be $false
