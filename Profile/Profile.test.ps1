@@ -27,4 +27,11 @@ Describe 'Profile' {
             $profile.login | Should -Be 'my-login'
         }
     }
+
+    It 'create profile without login parameter' {
+        ($profile, $__) = New-Profile "site.org"
+
+        $profile.login | Should -Be ''
+    }
+
 }

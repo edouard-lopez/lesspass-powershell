@@ -1,5 +1,9 @@
-function New-Profile([string]$site='',[string]$login='')
-{
+function New-Profile {
+    param(
+        $site,
+        $login,
+        $master_password,
+    )
     [PSCustomObject]@{
       lowercase = 1
       uppercase = 1
@@ -7,7 +11,9 @@ function New-Profile([string]$site='',[string]$login='')
       symbols = 1
       length = 16
       counter = 1
-      site = $site
       login = $login
+        site      = "$site"
+        login     = "$login"
     }
+    $master_password
 }
