@@ -52,4 +52,20 @@ Describe 'Profile' {
         $master_password | Should -Be "my_master_pasword"
     }
 
+    Context "Create profile with lowercase" {
+        ($profile, $__) = New-Profile "site.org" -l
+
+        It 'enable lowercase' {
+            $profile.lowercase | Should -Be $true
+        }
+        It 'disable uppercase' {
+            $profile.uppercase | Should -Be $false
+        }
+        It 'disable digits' {
+            $profile.digits | Should -Be $false
+        }
+        It 'disable symbols' {
+            $profile.symbols | Should -Be $false
+        }
+    }
 }
