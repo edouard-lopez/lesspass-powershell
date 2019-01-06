@@ -120,7 +120,23 @@ Describe 'Profile' {
         }
     }
 
+    Context "Create profile with lowercase and uppercase" {
+        ($profile, $__) = New-Profile "site.org" -lowercase -uppercase
+
+        It 'enable lowercase' {
+            $profile.lowercase | Should -Be $true
+        }
         It 'enable uppercase' {
+            $profile.uppercase | Should -Be $true
+        }
+        It 'disable digits' {
+            $profile.digits | Should -Be $false
+        }
+        It 'disable symbols' {
+            $profile.symbols | Should -Be $false
+        }
+    }
+    
             $profile.uppercase | Should -Be $false
         }
         It 'disable digits' {
