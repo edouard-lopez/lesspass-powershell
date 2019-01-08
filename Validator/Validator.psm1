@@ -1,10 +1,13 @@
 class NoOppositeRules {
-    [String] $errorMessage = ""
-
+    [String] $errorMessage = "error !"
     [Boolean] isValid() {
         return $false
     }
+    NoOppositeRules([String] $arg1){
+        write-host $this.errorMessage -ForegroundColor Red
+    }
 }
+
 
 function Confirm-Arguments {
     param(
@@ -17,7 +20,8 @@ function Confirm-Arguments {
      # instanciation de NoOppositeRules avec les arguments passés à Confirm-Arguments
     # Write-Host @PsBoundParameters "//" $args 
     # $NoOppositeRules = New-Object NoOppositeRules @PSBoundParameters $args
-    $rules = $NoOppositeRules
+
+    $rules = [NoOppositeRules]::new('test')
 
     $error = $false
     $errorMessage = "Can't have -l (--lowercase) and --no-lowercase at the same time"
