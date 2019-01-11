@@ -1,0 +1,1 @@
+# Test-ModuleManifest C:\Git\PSLessPassCli\lesspass\lesspass.psd1
