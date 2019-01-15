@@ -13,7 +13,7 @@ install:
   - sudo apt-get install -y powershell
 
 before_script:
-  - pwsh -Command 'Install-Module -Name Pester -Force'
+  - sudo pwsh -Command 'Install-Module -Name Pester -Force'
 script:
   - make test
 
