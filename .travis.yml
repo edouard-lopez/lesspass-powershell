@@ -1,6 +1,6 @@
 os: linux
 dist: trusty
-sudo: required
+sudo: false
 language: minimal
 
 addons:
@@ -12,7 +12,7 @@ addons:
       - powershell
 
 before_script:
-  - sudo pwsh -Command 'Install-Module -Name Pester -Force'
+  - pwsh -Command 'Install-Module -Name Pester -Force -Scope CurrentUser'
 script:
   - pwsh -Command 'Get-childItem -Recurse *.test.ps1 | foreach { Invoke-Pester $_ }'
 
