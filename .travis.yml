@@ -12,9 +12,9 @@ addons:
       - powershell
 
 before_script:
-  - pwsh -Command 'Install-Module -Name Pester -Force'
+  - sudo pwsh -Command 'Install-Module -Name Pester -Force'
 script:
-  - pwsh -Command 'Get-childItem -Recurse *.test.ps1 | foreach { Invoke-Pester $$_ }'
+  - sudo pwsh -Command 'Get-childItem -Recurse *.test.ps1 | foreach { Invoke-Pester $$_ }'
 
 notifications:
   email: false
