@@ -14,7 +14,7 @@ addons:
 before_script:
   - pwsh -Command 'Install-Module -Name Pester -Force -Scope CurrentUser'
 script:
-  - pwsh -Command 'Get-childItem -Recurse *.test.ps1 | foreach { Invoke-Pester -EnableExit $_ }'
+  - make test
 
 notifications:
   email: false
