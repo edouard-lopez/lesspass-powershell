@@ -5,7 +5,7 @@ language: minimal
 
 before_install:
   # Download the Microsoft repository GPG keys
-  - wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+  - wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
   # Register the Microsoft repository GPG keys
   - sudo dpkg -i packages-microsoft-prod.deb
 install:
