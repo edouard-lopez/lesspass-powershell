@@ -1,0 +1,19 @@
+os: linux
+dist: trusty
+sudo: false
+language: minimal
+
+before_install:
+  # Download the Microsoft repository GPG keys
+  - wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+  # Register the Microsoft repository GPG keys
+  - sudo dpkg -i packages-microsoft-prod.deb
+install:
+  - sudo apt-get update
+  - sudo apt-get install -y powershell
+
+script:
+  - make test
+
+notifications:
+  email: false
