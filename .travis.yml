@@ -10,6 +10,7 @@ addons:
         key_url: https://packages.microsoft.com/keys/microsoft.asc
     packages:
       - powershell
+      - xclip
 
 before_script:
   - pwsh -Command 'Install-Module -Name Pester -Force -Scope CurrentUser'
