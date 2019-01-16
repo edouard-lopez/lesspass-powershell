@@ -41,16 +41,16 @@ class DefaultParameters {
     [Boolean] isValid() {
         $isValid = $true
         
-        if (-Not $PSBoundParameters.site) {
+        Write-Host ">>" $PSBoundParameters
+        if (-Not $PSBoundParameters.site -and -not $PSBoundParameters.prompt) {
             $this.errorMessage = "Site is a required argument"
             $isValid = $false
         }
 
         return $isValid
     }
-    DefaultParameters($site ){ }
+    DefaultParameters($site, $prompt){ }
 }
-
 
 function Confirm-Arguments {
     param(
@@ -62,7 +62,8 @@ function Confirm-Arguments {
         [Alias('d')][Switch]$digits=$false,
         [Alias('nd')][Switch]$noDigits=$false,
         [Alias('s')][Switch]$symbols=$false,
-        [Alias('ns')][Switch]$noSymbols=$false
+        [Alias('ns')][Switch]$noSymbols=$false,
+        [Switch]$prompt=$false
     )
 
     $rules = [NoOppositeRules]::new(
@@ -70,7 +71,7 @@ function Confirm-Arguments {
         $uppercase, $noUppercase,
         $digits,    $noDigits,
         $symbols,   $noSymbols
-    ), [DefaultParameters]::new($site)
+    ), [DefaultParameters]::new($site, $prompt)
 
     $error = $false
     $errorMessage = ""

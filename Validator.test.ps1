@@ -58,4 +58,15 @@ Describe 'Validator' {
         }
     }
 
+    Context "Confirm Prompt argument make Site argument optional" {
+        ($error, $message) = Confirm-Arguments -Prompt
+
+        It 'returns an error' {
+            $error | Should -Be $false
+        }
+        It 'contains error message' {
+            " * SITE is a required argument (unless in interactive mode with --prompt)" | Should -Not -BeIn $message
+        }
+    }
+
 }
