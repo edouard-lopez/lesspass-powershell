@@ -1,11 +1,30 @@
 class NoOppositeRules {
-    [String] $errorMessage = "error !"
+    [String] $errorMessage = ""
+
     [Boolean] isValid() {
-        return $false
+        $isValid = $true
+        
+        if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
+            $this.errorMessage = "Can't have -l (--lowercase) and --no-lowercase at the same time"
+            $isValid = $false
+        }
+        if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
+            $this.errorMessage = "Can't have -u (--uppercase) and --no-uppercase at the same time"
+            $isValid = $false
+        }
+        
+        return $isValid
     }
-    NoOppositeRules([String] $arg1){
-        write-host $this.errorMessage -ForegroundColor Red
-    }
+    NoOppositeRules(
+        [Switch]$lowercase=$false,
+        [Switch]$uppercase=$false,
+        [Switch]$digits=$false,
+        [Switch]$symbols=$false,
+        [Switch]$noLowercase=$false,
+        [Switch]$noUppercase=$false,
+        [Switch]$noDigits=$false,
+        [Switch]$noSymbols=$false
+    ){ }
 }
 
 
@@ -17,14 +36,20 @@ function Confirm-Arguments {
         [Alias('nl')][Switch]$noLowercase=$false,
         [Alias('nu')][Switch]$noUppercase=$false
     )
-     # instanciation de NoOppositeRules avec les arguments passés à Confirm-Arguments
-    # Write-Host @PsBoundParameters "//" $args 
-    # $NoOppositeRules = New-Object NoOppositeRules @PSBoundParameters $args
 
-    $rules = [NoOppositeRules]::new('test')
+    $rules = [NoOppositeRules]::new(
+        $lowercase,
+        $uppercase,
+        $digits,
+        $symbols,
+        $noLowercase,
+        $noUppercase,
+        $noDigits,
+        $noSymbols
+    )
 
     $error = $false
-    $errorMessage = "Can't have -l (--lowercase) and --no-lowercase at the same time"
+    $errorMessage = ""
 
     ForEach ($rule in $rules) {
         If (-Not $rule.isValid()) {
