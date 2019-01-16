@@ -64,8 +64,19 @@ Describe 'Validator' {
         It 'returns an error' {
             $error | Should -Be $false
         }
-        It 'contains error message' {
+        It "doesn't contains error message" {
             " * SITE is a required argument (unless in interactive mode with --prompt)" | Should -Not -BeIn $message
+        }
+    }
+
+    Context "Confirm copy to clipboard is possible" {
+        ($error, $message) = Confirm-Arguments "Site" -Clipboard
+
+        It 'returns an error' {
+            $error | Should -Be $false
+        }
+        It "doesn't contains error message" {
+            " * To use the option -c (--copy) you need pbcopy on OSX, xsel or xclip on Linux and clip on Windows" | Should -Not -BeIn $message
         }
     }
 
