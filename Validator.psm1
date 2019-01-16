@@ -82,7 +82,7 @@ function Confirm-Arguments {
         }
     }
 
-    return $true, $errorMessage
+    return $error, $errorMessage
 }
 
 Export-ModuleMember -Function Confirm-Arguments
