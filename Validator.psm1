@@ -12,6 +12,10 @@ class NoOppositeRules {
             $this.errorMessage = "Can't have -u (--uppercase) and --no-uppercase at the same time"
             $isValid = $false
         }
+        if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
+            $this.errorMessage = "Can't have -d (--digits) and --no-Digits at the same time"
+            $isValid = $false
+        }
         
         return $isValid
     }
@@ -32,20 +36,18 @@ function Confirm-Arguments {
     param(
         $site,
         [Alias('l')][Switch]$lowercase=$false,
-        [Alias('u')][Switch]$uppercase=$false,
         [Alias('nl')][Switch]$noLowercase=$false,
-        [Alias('nu')][Switch]$noUppercase=$false
+        [Alias('u')][Switch]$uppercase=$false,
+        [Alias('nu')][Switch]$noUppercase=$false,
+        [Alias('d')][Switch]$digits=$false,
+        [Alias('nd')][Switch]$noDigits=$false
     )
 
     $rules = [NoOppositeRules]::new(
-        $lowercase,
-        $uppercase,
-        $digits,
-        $symbols,
-        $noLowercase,
-        $noUppercase,
-        $noDigits,
-        $noSymbols
+        $lowercase, $noLowercase,
+        $uppercase, $noUppercase,
+        $digits,    $noDigits,
+        $symbols,   $noSymbols
     )
 
     $error = $false

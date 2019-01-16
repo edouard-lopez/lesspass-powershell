@@ -25,13 +25,16 @@ Describe 'Validator' {
         }
     }
 
-    # Context "Confirm opposite rules for Digits" {
-    #     It 'returns an error' {
-    #         ($error, $message) = Confirm-Arguments "site.org" -Digits -noDigits
+    Context "Confirm opposite rules for Digits" {
+        ($error, $message) = Confirm-Arguments "site.org" -Digits -noDigits
 
-    #         $error | Should -Be $true
-    #     }
-    # }
+        It 'returns an error' {
+            $error | Should -Be $true
+        }
+        It 'contains error message' {
+            "Can't have -d (--digits) and --no-digits at the same time" | Should -BeIn $message
+        }
+    }
 
     # Context "Confirm opposite rules for Symbols" {
     #     It 'returns an error' {
