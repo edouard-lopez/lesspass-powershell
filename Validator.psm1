@@ -35,6 +35,22 @@ class NoOppositeRules {
     ){ }
 }
 
+class DefaultParameters {
+    [String] $errorMessage = ""
+
+    [Boolean] isValid() {
+        $isValid = $true
+        
+        if (-Not $PSBoundParameters.site) {
+            $this.errorMessage = "Site is a required argument"
+            $isValid = $false
+        }
+
+        return $isValid
+    }
+    DefaultParameters($site ){ }
+}
+
 
 function Confirm-Arguments {
     param(
@@ -54,7 +70,7 @@ function Confirm-Arguments {
         $uppercase, $noUppercase,
         $digits,    $noDigits,
         $symbols,   $noSymbols
-    )
+    ), [DefaultParameters]::new($site)
 
     $error = $false
     $errorMessage = ""
