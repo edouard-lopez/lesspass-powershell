@@ -16,6 +16,10 @@ class NoOppositeRules {
             $this.errorMessage = "Can't have -d (--digits) and --no-Digits at the same time"
             $isValid = $false
         }
+        if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
+            $this.errorMessage = "Can't have -d (--symbols) and --no-Symbols at the same time"
+            $isValid = $false
+        }
         
         return $isValid
     }
@@ -40,7 +44,9 @@ function Confirm-Arguments {
         [Alias('u')][Switch]$uppercase=$false,
         [Alias('nu')][Switch]$noUppercase=$false,
         [Alias('d')][Switch]$digits=$false,
-        [Alias('nd')][Switch]$noDigits=$false
+        [Alias('nd')][Switch]$noDigits=$false,
+        [Alias('s')][Switch]$symbols=$false,
+        [Alias('ns')][Switch]$noSymbols=$false
     )
 
     $rules = [NoOppositeRules]::new(
