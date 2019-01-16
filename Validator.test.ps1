@@ -36,12 +36,14 @@ Describe 'Validator' {
         }
     }
 
-    # Context "Confirm opposite rules for Symbols" {
-    #     It 'returns an error' {
-    #         ($error, $message) = Confirm-Arguments "site.org" -Symbols -noSymbols
-
-    #         $error | Should -Be $true
-    #     }
-    # }
+    Context "Confirm opposite rules for Symbols" {
+        ($error, $message) = Confirm-Arguments "site.org" -Symbols -noSymbols
+        It 'returns an error' {
+            $error | Should -Be $true
+        }
+        It 'contains error message' {
+            "Can't have -d (--symbols) and --no-symbols at the same time" | Should -BeIn $message
+        }
+    }
 
 }
