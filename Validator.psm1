@@ -41,7 +41,6 @@ class DefaultParameters {
     [Boolean] isValid() {
         $isValid = $true
         
-        Write-Host ">>" $PSBoundParameters
         if (-Not $PSBoundParameters.site -and -not $PSBoundParameters.prompt) {
             $this.errorMessage = " * SITE is a required argument (unless in interactive mode with --prompt)"
             $isValid = $false
@@ -50,6 +49,23 @@ class DefaultParameters {
         return $isValid
     }
     DefaultParameters($site, $prompt){ }
+}
+
+class ClipboardAvailable {
+    [String] $errorMessage = ""
+
+    [Boolean] isValid() {
+        $isValid = $true
+        
+        $copyCommandAvailable = Get-SystemCopyCommand
+        if ($PSBoundParameters.clipboard -and $null -eq $copyCommandAvailable) {
+            $this.errorMessage = " * To use the option -c (--copy) you need pbcopy on OSX, xsel or xclip on Linux and clip on Windows"
+            $isValid = $false
+        }
+
+        return $isValid
+    }
+    ClipboardAvailable($clipboard){ }
 }
 
 function Confirm-Arguments {
@@ -63,7 +79,8 @@ function Confirm-Arguments {
         [Alias('nd')][Switch]$noDigits=$false,
         [Alias('s')][Switch]$symbols=$false,
         [Alias('ns')][Switch]$noSymbols=$false,
-        [Switch]$prompt=$false
+        [Switch]$prompt=$false,
+        [Switch]$clipboard=$false
     )
 
     $rules = [NoOppositeRules]::new(
@@ -71,7 +88,7 @@ function Confirm-Arguments {
         $uppercase, $noUppercase,
         $digits,    $noDigits,
         $symbols,   $noSymbols
-    ), [DefaultParameters]::new($site, $prompt)
+    ), [DefaultParameters]::new($site, $prompt), [ClipboardAvailable]::new($clipboard)
 
     $error = $false
     $errorMessage = ""

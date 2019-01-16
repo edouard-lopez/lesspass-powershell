@@ -58,7 +58,7 @@ PowerShellVersion = '5.0'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Profile.psm1','Validator.psm1')
+NestedModules = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = '*'
@@ -76,10 +76,10 @@ AliasesToExport = '*'
 # DscResourcesToExport = @()
 
 # List of all modules packaged with this module
-ModuleList = @('Profile.psm1','Validator.psm1')
+ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # List of all files packaged with this module
-FileList = 'lesspass.psd1','lesspass.psm1','Profile.psm1','Validator.psm1'
+FileList = 'lesspass.psd1','lesspass.psm1','Profile.psm1','Validator.psm1','Clipboard.psm1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
