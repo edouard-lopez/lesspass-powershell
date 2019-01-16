@@ -38,11 +38,23 @@ Describe 'Validator' {
 
     Context "Confirm opposite rules for Symbols" {
         ($error, $message) = Confirm-Arguments "site.org" -Symbols -noSymbols
+        
         It 'returns an error' {
             $error | Should -Be $true
         }
         It 'contains error message' {
             "Can't have -d (--symbols) and --no-symbols at the same time" | Should -BeIn $message
+        }
+    }
+
+    Context "Confirm Site argument is required" {
+        ($error, $message) = Confirm-Arguments
+
+        It 'returns an error' {
+            $error | Should -Be $true
+        }
+        It 'contains error message' {
+            "Site is a required argument" | Should -BeIn $message
         }
     }
 
