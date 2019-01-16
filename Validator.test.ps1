@@ -10,7 +10,7 @@ Describe 'Validator' {
             $error | Should -Be $true
         }
         It 'contains error message' {
-            "Can't have -l (--lowercase) and --no-lowercase at the same time" | Should -BeIn $message
+            "* Can't have -l (--lowercase) and --no-lowercase at the same time" | Should -BeIn $message
         }
     }
 
@@ -21,7 +21,7 @@ Describe 'Validator' {
             $error | Should -Be $true
         }
         It 'contains error message' {
-            "Can't have -u (--uppercase) and --no-uppercase at the same time" | Should -BeIn $message
+            "* Can't have -u (--uppercase) and --no-uppercase at the same time" | Should -BeIn $message
         }
     }
 
@@ -32,7 +32,7 @@ Describe 'Validator' {
             $error | Should -Be $true
         }
         It 'contains error message' {
-            "Can't have -d (--digits) and --no-digits at the same time" | Should -BeIn $message
+            "* Can't have -d (--digits) and --no-digits at the same time" | Should -BeIn $message
         }
     }
 
@@ -43,7 +43,7 @@ Describe 'Validator' {
             $error | Should -Be $true
         }
         It 'contains error message' {
-            "Can't have -d (--symbols) and --no-symbols at the same time" | Should -BeIn $message
+            "* Can't have -d (--symbols) and --no-symbols at the same time" | Should -BeIn $message
         }
     }
 
@@ -54,7 +54,7 @@ Describe 'Validator' {
             $error | Should -Be $true
         }
         It 'contains error message' {
-            "Site is a required argument" | Should -BeIn $message
+            " * SITE is a required argument (unless in interactive mode with --prompt)" | Should -BeIn $message
         }
     }
 

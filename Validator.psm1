@@ -5,19 +5,19 @@ class NoOppositeRules {
         $isValid = $true
         
         if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
-            $this.errorMessage = "Can't have -l (--lowercase) and --no-lowercase at the same time"
+            $this.errorMessage = "* Can't have -l (--lowercase) and --no-lowercase at the same time"
             $isValid = $false
         }
         if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
-            $this.errorMessage = "Can't have -u (--uppercase) and --no-uppercase at the same time"
+            $this.errorMessage = "* Can't have -u (--uppercase) and --no-uppercase at the same time"
             $isValid = $false
         }
         if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
-            $this.errorMessage = "Can't have -d (--digits) and --no-Digits at the same time"
+            $this.errorMessage = "* Can't have -d (--digits) and --no-Digits at the same time"
             $isValid = $false
         }
         if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
-            $this.errorMessage = "Can't have -d (--symbols) and --no-Symbols at the same time"
+            $this.errorMessage = "* Can't have -d (--symbols) and --no-Symbols at the same time"
             $isValid = $false
         }
         
@@ -43,7 +43,7 @@ class DefaultParameters {
         
         Write-Host ">>" $PSBoundParameters
         if (-Not $PSBoundParameters.site -and -not $PSBoundParameters.prompt) {
-            $this.errorMessage = "Site is a required argument"
+            $this.errorMessage = " * SITE is a required argument (unless in interactive mode with --prompt)"
             $isValid = $false
         }
 
