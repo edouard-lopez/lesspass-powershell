@@ -13,7 +13,7 @@ addons:
       - xclip
 
 before_script:
-  - pwsh -Command 'Install-Module -Name Pester -Name ClipboardText -Force -Scope CurrentUser'
+  - pwsh -Command 'Install-Module -Name Pester,ClipboardText -Force -Scope CurrentUser'
 script:
   - make test
 
