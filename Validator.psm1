@@ -15,19 +15,19 @@ function Confirm-Arguments {
     )
 
     if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
-        throw "* Can't have -l (--lowercase) and --no-lowercase at the same time"
+        throw "* Can't have opposite rule -L (or -Lowercase) and -NL (or -No-Lowercase) at the same time."
     }
     if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
-        throw "* Can't have -u (--uppercase) and --no-uppercase at the same time"
+        throw "* Can't have opposite rule -U (or -Uppercase) and -NU (or -No-Uppercase) at the same time."
     }
     if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
-        throw "* Can't have -d (--digits) and --no-Digits at the same time"
+        throw "* Can't have opposite rule -D (or -Digits) and -ND (or -No-Digits) at the same time."
     }
     if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
-        throw "* Can't have -d (--symbols) and --no-Symbols at the same time"
+        throw "* Can't have opposite rule -S (or -Symbols) and -NS (or -No-Symbols) at the same time."
     }
     if (!$PSBoundParameters.site -and !$PSBoundParameters.prompt) {
-        throw " * SITE is a required argument (unless in interactive mode with --prompt)"
+        throw " * SITE is a required argument (unless in interactive mode with -Prompt)"
     }
     if ($PSBoundParameters.clipboard) {
         Get-SystemCopyCommand
