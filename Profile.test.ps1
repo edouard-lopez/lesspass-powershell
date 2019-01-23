@@ -1,4 +1,4 @@
-Import-Module $PSScriptRoot/lesspass.psd1 -Force  # force code to be reloaded
+Import-Module $PSScriptRoot/Profile.psm1 -Force  # force code to be reloaded
 
 Clear-Host
 
