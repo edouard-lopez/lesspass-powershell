@@ -5,7 +5,7 @@ Clear-Host
 Describe 'Validator' {
     Context "Confirm on simple rules " {
         It 'returns no error : Lowercase' {
-            {Confirm-Arguments "site.org" -lowercase} | Should -not -Throw
+            {Confirm-Arguments "site.org" -Lowercase} | Should -not -Throw
         }
         It 'returns no error : Uppercase' {
             {Confirm-Arguments "site.org" -Uppercase} | Should -not -Throw
@@ -31,10 +31,10 @@ Describe 'Validator' {
     }
     Context "Confirm opposite rules " {
         It 'returns an error : Lowercase' {
-            {Confirm-Arguments "site.org" -lowercase -noLowercase} | Should -Throw
+            {Confirm-Arguments "site.org" -Lowercase -NoLowercase} | Should -Throw
         }
         It 'returns an error : Uppercase' {
-            {Confirm-Arguments "site.org" -Uppercase -noUppercase} | Should -Throw
+            {Confirm-Arguments "site.org" -Uppercase -NoUppercase} | Should -Throw
         }
         It 'returns an error : Digits' {
             {Confirm-Arguments "site.org" -Digits -noDigits} | Should -Throw
@@ -44,21 +44,21 @@ Describe 'Validator' {
         }
     }
 
-    Context "Confirm Site argument is required" {
+    Context "Confirm `site` argument is required" {
         It 'returns an error missing site' {
-            {Confirm-Arguments -Symbols -lowercase -Uppercase -Digits} | Should -Throw
+            {Confirm-Arguments -Symbols -Lowercase -Uppercase -Digits} | Should -Throw
         }
     }
 
-    Context "Confirm Prompt argument make Site argument optional" {
+    Context "Confirm Prompt argument make `site` argument optional" {
         It "doesn't contains error message" {
-            {Confirm-Arguments -prompt} | Should -not -Throw
+            {Confirm-Arguments -Prompt} | Should -not -Throw
         }
     }
 
     Context "Confirm copy to clipboard is possible" {
         It "doesn't contains error message" {
-            {Confirm-Arguments "Site" -Clipboard} | Should -Not -Throw
+            {Confirm-Arguments "site.org" -Clipboard} | Should -Not -Throw
         }
     }
 }
