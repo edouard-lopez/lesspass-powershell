@@ -3,10 +3,10 @@ Import-Module $PSScriptRoot/lesspass.psd1 -Force  # force code to be reloaded
 Clear-Host
 
 Describe 'Clipboard' {
-    Context "Check copy executable" {
+    Context "Check" {
         $CopyCommand = Get-SystemCopyCommand
 
-        It 'does not throws error when executable is present' {
+        It 'copy executable is present' {
             {$CopyCommand.CommandType} | Should -not -Throw
         }
     }

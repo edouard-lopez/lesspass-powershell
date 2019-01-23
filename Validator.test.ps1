@@ -3,61 +3,64 @@ Import-Module $PSScriptRoot/lesspass.psd1 -Force  # force code to be reloaded
 Clear-Host
 
 Describe 'Validator' {
-    Context "Confirm on simple rules " {
-        It 'returns no error : Lowercase' {
-            {Confirm-Arguments "site.org" -Lowercase} | Should -not -Throw
+    Context "Simple rule" {
+        It '-Lowercase is allowed' {
+            {Confirm-Arguments "site.org" -Lowercase} | Should -Not -Throw
         }
-        It 'returns no error : Uppercase' {
-            {Confirm-Arguments "site.org" -Uppercase} | Should -not -Throw
+        It '-Uppercase is allowed' {
+            {Confirm-Arguments "site.org" -Uppercase} | Should -Not -Throw
         }
-        It 'returns no error : Digits' {
-            {Confirm-Arguments "site.org" -Digits} | Should -not -Throw
+        It '-Digits is allowed' {
+            {Confirm-Arguments "site.org" -Digits} | Should -Not -Throw
         }
-        It 'returns no error : Symbols' {
-            {Confirm-Arguments "site.org" -Symbols} | Should -not -Throw
+        It '-Symbols is allowed' {
+            {Confirm-Arguments "site.org" -Symbols} | Should -Not -Throw
         }
-        It 'returns no error : noLowercase' {
-            {Confirm-Arguments "site.org" -Nolowercase} | Should -not -Throw
+        It '-NoLowercase is allowed' {
+            {Confirm-Arguments "site.org" -NoLowercase} | Should -Not -Throw
         }
-        It 'returns no error : noUppercase' {
-            {Confirm-Arguments "site.org" -NoUppercase} | Should -not -Throw
+        It '-NoUppercase is allowed' {
+            {Confirm-Arguments "site.org" -NoUppercase} | Should -Not -Throw
         }
-        It 'returns no error : noDigits' {
-            {Confirm-Arguments "site.org" -NoDigits} | Should -not -Throw
+        It '-NoDigits is allowed' {
+            {Confirm-Arguments "site.org" -NoDigits} | Should -Not -Throw
         }
-        It 'returns no error : noSymbols' {
-            {Confirm-Arguments "site.org" -NoSymbols} | Should -not -Throw
+        It '-NoSymbols is allowed' {
+            {Confirm-Arguments "site.org" -NoSymbols} | Should -Not -Throw
         }
     }
-    Context "Confirm opposite rules " {
-        It 'returns an error : Lowercase' {
+    Context "Opposite rules" {
+        It '-Lowercase and -NoLowercase are not allowed together' {
             {Confirm-Arguments "site.org" -Lowercase -NoLowercase} | Should -Throw
         }
-        It 'returns an error : Uppercase' {
+        It '-Uppercase and -NoUppercase are not allowed together' {
             {Confirm-Arguments "site.org" -Uppercase -NoUppercase} | Should -Throw
         }
-        It 'returns an error : Digits' {
-            {Confirm-Arguments "site.org" -Digits -noDigits} | Should -Throw
+        It '-Digits and -NoDigits are not allowed together' {
+            {Confirm-Arguments "site.org" -Digits -NoDigits} | Should -Throw
         }
-        It 'returns an error : Symbols' {
-            {Confirm-Arguments "site.org" -Symbols -noSymbols} | Should -Throw
+        It '-Symbols and -NoSymbols are not allowed together' {
+            {Confirm-Arguments "site.org" -Symbols -NoSymbols} | Should -Throw
         }
     }
 
-    Context "Confirm `site` argument is required" {
-        It 'returns an error missing site' {
+    Context "`site` argument is required" {
+        It 'when no argument provided' {
+            {Confirm-Arguments} | Should -Throw
+        }
+        It 'when various arguments provided' {
             {Confirm-Arguments -Symbols -Lowercase -Uppercase -Digits} | Should -Throw
         }
     }
 
-    Context "Confirm Prompt argument make `site` argument optional" {
-        It "doesn't contains error message" {
-            {Confirm-Arguments -Prompt} | Should -not -Throw
+    Context "-Prompt argument" {
+        It "make `site` argument optional" {
+            {Confirm-Arguments -Prompt} | Should -Not -Throw
         }
     }
 
-    Context "Confirm copy to clipboard is possible" {
-        It "doesn't contains error message" {
+    Context "copy to clipboard" {
+        It "is possible" {
             {Confirm-Arguments "site.org" -Clipboard} | Should -Not -Throw
         }
     }
