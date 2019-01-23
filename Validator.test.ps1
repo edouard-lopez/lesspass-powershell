@@ -3,81 +3,62 @@ Import-Module $PSScriptRoot/lesspass.psd1 -Force  # force code to be reloaded
 Clear-Host
 
 Describe 'Validator' {
-    Context "Confirm opposite rules for Lowercase" {
-        ($error, $message) = Confirm-Arguments "site.org" -lowercase -noLowercase
-
-        It 'returns an error' {
-            $error | Should -Be $true
+    Context "Confirm on simple rules " {
+        It 'returns no error : Lowercase' {
+            {Confirm-Arguments "site.org" -lowercase} | Should -not -Throw
         }
-        It 'contains error message' {
-            "* Can't have -l (--lowercase) and --no-lowercase at the same time" | Should -BeIn $message
+        It 'returns no error : Uppercase' {
+            {Confirm-Arguments "site.org" -Uppercase} | Should -not -Throw
         }
-    }
-
-    Context "Confirm opposite rules for Uppercase" {
-        ($error, $message) = Confirm-Arguments "site.org" -Uppercase -noUppercase
-        
-        It 'returns an error' {
-            $error | Should -Be $true
+        It 'returns no error : Digits' {
+            {Confirm-Arguments "site.org" -Digits} | Should -not -Throw
         }
-        It 'contains error message' {
-            "* Can't have -u (--uppercase) and --no-uppercase at the same time" | Should -BeIn $message
+        It 'returns no error : Symbols' {
+            {Confirm-Arguments "site.org" -Symbols} | Should -not -Throw
         }
-    }
-
-    Context "Confirm opposite rules for Digits" {
-        ($error, $message) = Confirm-Arguments "site.org" -Digits -noDigits
-
-        It 'returns an error' {
-            $error | Should -Be $true
+        It 'returns no error : noLowercase' {
+            {Confirm-Arguments "site.org" -Nolowercase} | Should -not -Throw
         }
-        It 'contains error message' {
-            "* Can't have -d (--digits) and --no-digits at the same time" | Should -BeIn $message
+        It 'returns no error : noUppercase' {
+            {Confirm-Arguments "site.org" -NoUppercase} | Should -not -Throw
+        }
+        It 'returns no error : noDigits' {
+            {Confirm-Arguments "site.org" -NoDigits} | Should -not -Throw
+        }
+        It 'returns no error : noSymbols' {
+            {Confirm-Arguments "site.org" -NoSymbols} | Should -not -Throw
         }
     }
-
-    Context "Confirm opposite rules for Symbols" {
-        ($error, $message) = Confirm-Arguments "site.org" -Symbols -noSymbols
-        
-        It 'returns an error' {
-            $error | Should -Be $true
+    Context "Confirm opposite rules " {
+        It 'returns an error : Lowercase' {
+            {Confirm-Arguments "site.org" -lowercase -noLowercase} | Should -Throw
         }
-        It 'contains error message' {
-            "* Can't have -d (--symbols) and --no-symbols at the same time" | Should -BeIn $message
+        It 'returns an error : Uppercase' {
+            {Confirm-Arguments "site.org" -Uppercase -noUppercase} | Should -Throw
+        }
+        It 'returns an error : Digits' {
+            {Confirm-Arguments "site.org" -Digits -noDigits} | Should -Throw
+        }
+        It 'returns an error : Symbols' {
+            {Confirm-Arguments "site.org" -Symbols -noSymbols} | Should -Throw
         }
     }
 
     Context "Confirm Site argument is required" {
-        ($error, $message) = Confirm-Arguments
-
-        It 'returns an error' {
-            $error | Should -Be $true
-        }
-        It 'contains error message' {
-            " * SITE is a required argument (unless in interactive mode with --prompt)" | Should -BeIn $message
+        It 'returns an error missing site' {
+            {Confirm-Arguments -Symbols -lowercase -Uppercase -Digits} | Should -Throw
         }
     }
 
     Context "Confirm Prompt argument make Site argument optional" {
-        ($error, $message) = Confirm-Arguments -Prompt
-
-        It 'returns an error' {
-            $error | Should -Be $false
-        }
         It "doesn't contains error message" {
-            " * SITE is a required argument (unless in interactive mode with --prompt)" | Should -Not -BeIn $message
+            {Confirm-Arguments -prompt} | Should -not -Throw
         }
     }
 
     Context "Confirm copy to clipboard is possible" {
-        ($error, $message) = Confirm-Arguments "Site" -Clipboard
-
-        It 'returns an error' {
-            $error | Should -Be $false
-        }
         It "doesn't contains error message" {
-            " * To use the option -c (--copy) you need pbcopy on OSX, xsel or xclip on Linux and clip on Windows" | Should -Not -BeIn $message
+            {Confirm-Arguments "Site" -Clipboard} | Should -Not -Throw
         }
     }
-
 }

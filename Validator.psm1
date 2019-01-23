@@ -1,72 +1,3 @@
-class NoOppositeRules {
-    [String] $errorMessage = ""
-
-    [Boolean] isValid() {
-        $isValid = $true
-        
-        if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
-            $this.errorMessage = "* Can't have -l (--lowercase) and --no-lowercase at the same time"
-            $isValid = $false
-        }
-        if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
-            $this.errorMessage = "* Can't have -u (--uppercase) and --no-uppercase at the same time"
-            $isValid = $false
-        }
-        if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
-            $this.errorMessage = "* Can't have -d (--digits) and --no-Digits at the same time"
-            $isValid = $false
-        }
-        if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
-            $this.errorMessage = "* Can't have -d (--symbols) and --no-Symbols at the same time"
-            $isValid = $false
-        }
-        
-        return $isValid
-    }
-    NoOppositeRules(
-        [Switch]$lowercase=$false,
-        [Switch]$uppercase=$false,
-        [Switch]$digits=$false,
-        [Switch]$symbols=$false,
-        [Switch]$noLowercase=$false,
-        [Switch]$noUppercase=$false,
-        [Switch]$noDigits=$false,
-        [Switch]$noSymbols=$false
-    ){ }
-}
-
-class DefaultParameters {
-    [String] $errorMessage = ""
-
-    [Boolean] isValid() {
-        $isValid = $true
-        
-        if (-Not $PSBoundParameters.site -and -not $PSBoundParameters.prompt) {
-            $this.errorMessage = " * SITE is a required argument (unless in interactive mode with --prompt)"
-            $isValid = $false
-        }
-
-        return $isValid
-    }
-    DefaultParameters($site, $prompt){ }
-}
-
-class ClipboardAvailable {
-    [String] $errorMessage = ""
-
-    [Boolean] isValid() {
-        $isValid = $true
-        
-        $copyCommandAvailable = Get-SystemCopyCommand
-        if ($PSBoundParameters.clipboard -and $null -eq $copyCommandAvailable) {
-            $this.errorMessage = " * To use the option -c (--copy) you need pbcopy on OSX, xsel or xclip on Linux and clip on Windows"
-            $isValid = $false
-        }
-
-        return $isValid
-    }
-    ClipboardAvailable($clipboard){ }
-}
 
 function Confirm-Arguments {
     param(
@@ -83,24 +14,24 @@ function Confirm-Arguments {
         [Switch]$clipboard=$false
     )
 
-    $rules = [NoOppositeRules]::new(
-        $lowercase, $noLowercase,
-        $uppercase, $noUppercase,
-        $digits,    $noDigits,
-        $symbols,   $noSymbols
-    ), [DefaultParameters]::new($site, $prompt), [ClipboardAvailable]::new($clipboard)
-
-    $error = $false
-    $errorMessage = ""
-
-    ForEach ($rule in $rules) {
-        If (-Not $rule.isValid()) {
-            $error = $true
-            $errorMessage += $rule.errorMessage
-        }
+    if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
+        throw "* Can't have -l (--lowercase) and --no-lowercase at the same time"
     }
-
-    return $error, $errorMessage
+    if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
+        throw "* Can't have -u (--uppercase) and --no-uppercase at the same time"
+    }
+    if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
+        throw "* Can't have -d (--digits) and --no-Digits at the same time"
+    }
+    if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
+        throw "* Can't have -d (--symbols) and --no-Symbols at the same time"
+    }
+    if (!$PSBoundParameters.site -and !$PSBoundParameters.prompt) {
+        throw " * SITE is a required argument (unless in interactive mode with --prompt)"
+    }
+    if ($PSBoundParameters.clipboard) {
+        Get-SystemCopyCommand
+    }
 }
 
 Export-ModuleMember -Function Confirm-Arguments
