@@ -4,10 +4,10 @@ Clear-Host
 
 Describe 'Clipboard' {
     Context "Check copy executable" {
-        $copy_command = Get-SystemCopyCommand
+        $CopyCommand = Get-SystemCopyCommand
 
-        It 'is an application' {
-            $copy_command.CommandType | Should -Be 'Application'
+        It 'does not throws error when executable is present' {
+            {$CopyCommand.CommandType} | Should -not -Throw
         }
     }
 }
