@@ -67,6 +67,19 @@ Describe 'Rendder Password' {
             $remaining_entropy | Should -Be "21019920789038193790619410818194537836313158091882651458040"
         }
     }
+    Context "GetOneCharPerRule" {
+        [BigInt]$Entropy = "21019920789038193790619410818194537836313158091882651458040"
+        
+        It "get one char per rule without rules" {
+            GetOneCharPerRule $Entropy @() `
+            | Should -Be "", "21019920789038193790619410818194537836313158091882651458040"
+        }
+
+        It "get one char per rule with several rules" {
+            GetOneCharPerRule $Entropy @("lowercase", "digits") `
+            | Should -Be "a0", "80845849188608437656228503146902068601204454199548659454"
+        }
+    }
 }
 
 Describe 'Password' {

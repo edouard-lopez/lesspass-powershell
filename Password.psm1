@@ -89,6 +89,22 @@ function ConsumeEntropy {
     }
 }
 
+function GetOneCharPerRule {
+    param(
+        [BigInt]$Entropy, 
+        $Rules=@()
+    )
+    process{
+        $OneCharPerRules = ""
+        foreach ($rule in $Rules) {
+            $Value, $Entropy = ConsumeEntropy "" $Entropy $CharacterSubsets.$rule 1
+            $OneCharPerRules += $Value
+        }
+        return $OneCharPerRules, $Entropy
+
+    }
+}
+
 # function InsertStringPseudoRandomly {
 #     param(
 #         [String]$GeneratedPassword, 
@@ -97,13 +113,7 @@ function ConsumeEntropy {
 #     )
 #     process{}
 # }
-# function GetOneCharPerRule {
-#     param(
-#         [Int]$Entropy, 
-#         $Rules
-#     )
-#     process{}
-# }
+
 
 function RenderPassword {
     param(
@@ -117,7 +127,9 @@ function RenderPassword {
         $SetOfCharacters = GetSetOfCharacters $Rules
         $MaxLength = $PasswordProfile.Length - $Rules.count
 
-        ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
+        $Password, $PasswordEntropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
+
+        $CharactersToAdd, $CharacterEntropy = GetOneCharPerRule $PasswordEntropy $Rules
     }
 }
 
@@ -133,4 +145,4 @@ function GeneratePassword {
     }
 }
 
-Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters, ConsumeEntropy
+Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters, ConsumeEntropy, GetOneCharPerRule
