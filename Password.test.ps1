@@ -2,6 +2,27 @@ Import-Module $PSScriptRoot/Password.psm1 -Force  # force code to be reloaded
 
 Clear-Host
 
+Describe 'Rendder Password' {
+    Context "GetConfiguredRules" {
+        It "is empty when no rules in profile" {
+            $PasswordProfile = @{}
+            
+            GetConfiguredRules $PasswordProfile | Should -Be @()
+        }
+
+        It "ignore disabled rules" {
+            $PasswordProfile = @{
+                lowercase = $False
+                uppercase = $True
+                digits    = $False
+                symbols   = $True
+            }
+            
+            GetConfiguredRules $PasswordProfile | Should -Be @("uppercase", "symbols")
+        }
+    }
+}
+
 Describe 'Password' {
     Context "Compute Entropy" {
         It "as a lower case hexadecimal string" {
