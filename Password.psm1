@@ -68,15 +68,27 @@ function GetSetOfCharacters {
         return $SetOfCharacters
     }
 }
-# function ConsumeEntropy {
-#     param(
-#         [String]$GeneratedPassword, 
-#         [Int]$Quotient, 
-#         [String]$SetOfCharacters, 
-#         [Int]$MaxLength
-#     )
-#     process{}
-# }
+
+function ConsumeEntropy {
+    param(
+        [String]$GeneratedPassword, 
+        [BigInt]$Quotient, 
+        [String]$SetOfCharacters, 
+        [Int]$MaxLength
+    )
+    process{
+        if ($GeneratedPassword.Length -ge $MaxLength) {
+            return $GeneratedPassword, $Quotient
+        }
+        $Remainder = 0
+        $Quotient = [BigInt]::DivRem( $Quotient, $SetOfCharacters.Length, [ref]$Remainder )
+        $GeneratedPassword += $SetOfCharacters[$Remainder]
+
+        return ConsumeEntropy $GeneratedPassword $Quotient $SetOfCharacters $MaxLength
+
+    }
+}
+
 # function InsertStringPseudoRandomly {
 #     param(
 #         [String]$GeneratedPassword, 
@@ -92,6 +104,7 @@ function GetSetOfCharacters {
 #     )
 #     process{}
 # }
+
 function RenderPassword {
     param(
         [String]$Entropy, 
@@ -99,14 +112,15 @@ function RenderPassword {
     )
     process{
         $GeneratedPassword = ""
-        $EntropyAsHex = [System.Numerics.BigInteger]::Parse('0'+$Entropy, 'AllowHexSpecifier')
+        $EntropyAsInt = [System.Numerics.BigInteger]::Parse('0'+$Entropy, 'AllowHexSpecifier')
         $Rules = GetConfiguredRules $PasswordProfile
         $SetOfCharacters = GetSetOfCharacters $Rules
         $MaxLength = $PasswordProfile.Length - $Rules.count
 
-        ConsumeEntropy $GeneratedPassword $EntropyAsHex $SetOfCharacters $MaxLength
+        ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
     }
 }
+
 function GeneratePassword {
     param(
         $PasswordProfile, 

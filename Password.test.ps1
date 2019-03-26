@@ -48,6 +48,25 @@ Describe 'Rendder Password' {
             GetSetOfCharacters @("lowercase", "digits") | Should -Be "abcdefghijklmnopqrstuvwxyz0123456789"
         }
     }
+
+    Context "ConsumeEntropy" {
+        $GeneratedPassword = ""
+        # declaring BigInt as a string is mandatory, see https://stackoverflow.com/q/55366362/802365
+        [BigInt]$EntropyAsInt = "99600400399777174105034830393873797761817714609490038944205586760025858632478"
+        
+        $SetOfCharacters = "abcdefghijklmnopqrstuvwxyz0123456789"
+        $MaxLength = 12
+
+        $generated_password, $remaining_entropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
+
+        It "returns generated password value" {
+            $generated_password | Should -Be "gsrwvjl3d0sn"
+        }
+
+        It "returns the remaining entropy" {
+            $remaining_entropy | Should -Be "21019920789038193790619410818194537836313158091882651458040"
+        }
+    }
 }
 
 Describe 'Password' {
