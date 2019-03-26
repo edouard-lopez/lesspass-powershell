@@ -35,9 +35,9 @@ function CalcEntropy {
         $Iterations = 100000
         $DerivedKeyLength = 32
 
-        $Entropy = PBKDF2_by_medo64 $HashAlgorithm $MasterPasswordAsBytes $SaltAsBytes $Iterations $DerivedKeyLength
+        $EntropyAsBytes = PBKDF2_by_medo64 $HashAlgorithm $MasterPasswordAsBytes $SaltAsBytes $Iterations $DerivedKeyLength
 
-        return [System.BitConverter]::ToString($Entropy).ToLower().Replace('-', '')
+        return ($EntropyAsBytes | ForEach-Object ToString X2) -join ''
     }
 }
 
@@ -47,7 +47,6 @@ function GetConfiguredRules {
     )
     process{
         $Rules = @("lowercase", "uppercase", "digits", "symbols")
-        $ruleset = @()
 
         return $PasswordProfile.Keys | Where-Object { $PasswordProfile.$_ -contains $Rules }
     }
@@ -99,8 +98,13 @@ function RenderPassword {
         $PasswordProfile
     )
     process{
+        $GeneratedPassword = ""
+        $EntropyAsHex = [System.Numerics.BigInteger]::Parse('0'+$Entropy, 'AllowHexSpecifier')
         $Rules = GetConfiguredRules $PasswordProfile
         $SetOfCharacters = GetSetOfCharacters $Rules
+        $MaxLength = $PasswordProfile.Length - $Rules.count
+
+        ConsumeEntropy $GeneratedPassword $EntropyAsHex $SetOfCharacters $MaxLength
     }
 }
 function GeneratePassword {
@@ -115,4 +119,4 @@ function GeneratePassword {
     }
 }
 
-Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters
+Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters, ConsumeEntropy

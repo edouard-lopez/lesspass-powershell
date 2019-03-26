@@ -52,16 +52,16 @@ Describe 'Rendder Password' {
 
 Describe 'Password' {
     Context "Compute Entropy" {
-        # It "as a lower case hexadecimal string" {
-        #     $PasswordProfile = @{
-        #         site      = "example.org"
-        #         login     = "contact@example.org"
-        #         counter   = 1
-        #     }
-        #     $MasterPassword = "password"
+        It "as a lower case hexadecimal string" {
+            $PasswordProfile = @{
+                site      = "example.org"
+                login     = "contact@example.org"
+                counter   = 1
+            }
+            $MasterPassword = "password"
 
-        #     CalcEntropy $PasswordProfile $MasterPassword | Should -Be 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
-        # }
+            CalcEntropy $PasswordProfile $MasterPassword | Should -Be 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
+        }
     }
     Context "Generate" {
         # It 'with profile #1' {
