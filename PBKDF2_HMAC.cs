@@ -1,4 +1,6 @@
 /*
+FROM: https://github.com/latkin/1poshword/blob/2fd0f8984d/pbkdf2.cs
+
   From https://www.medo64.com/2012/04/pbkdf2-with-sha-256-and-others/
   MIT LICENSE
 
