@@ -72,15 +72,20 @@ function CalcEntropy {
 #     )
 #     process{}
 # }
-# function GetConfiguredRules {
-#     param(
-#         $PasswordProfile
-#     )
-#     process{}
-# }
+function GetConfiguredRules {
+    param(
+        $PasswordProfile
+    )
+    process{
+        $Rules = @("lowercase", "uppercase", "digits", "symbols")
+        $ruleset = @()
+
+        return $PasswordProfile.Keys | Where-Object { $PasswordProfile.$_ -contains $Rules }
+    }
+}
 function RenderPassword {
     param(
-        [Int]$Entropy, 
+        [String]$Entropy, 
         $PasswordProfile
     )
     process{}
@@ -99,4 +104,4 @@ function GeneratePassword {
     }
 }
 
-Export-ModuleMember -Function CalcEntropy, GeneratePassword
+Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules
