@@ -105,15 +105,24 @@ function GetOneCharPerRule {
     }
 }
 
-# function InsertStringPseudoRandomly {
-#     param(
-#         [String]$GeneratedPassword, 
-#         [Int]$Entropy, 
-#         [String]$String
-#     )
-#     process{}
-# }
-
+function InsertStringPseudoRandomly {
+    param(
+        [String]$GeneratedPassword, 
+        [BigInt]$Entropy, 
+        [String]$String
+    )
+    process{
+        foreach ($letter in $String.ToCharArray()) {
+            [Int]$Remainder = 0
+            $Quotient = [BigInt]::DivRem( $Entropy, $GeneratedPassword.Length, [ref]$Remainder )
+            $BeforeInsertion = $GeneratedPassword[0..($Remainder -1)] -join ''
+            $AfterInsertion = $GeneratedPassword[$Remainder..($GeneratedPassword.Length -1)] -join ''
+            $GeneratedPassword = $BeforeInsertion,$letter,$AfterInsertion -join ''
+            $Entropy = $Quotient
+        }
+        return $GeneratedPassword
+    }
+}
 
 function RenderPassword {
     param(
@@ -145,4 +154,10 @@ function GeneratePassword {
     }
 }
 
-Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters, ConsumeEntropy, GetOneCharPerRule
+Export-ModuleMember -Function   CalcEntropy, `
+                                GeneratePassword, `
+                                GetConfiguredRules, `
+                                GetSetOfCharacters, `
+                                ConsumeEntropy, `
+                                GetOneCharPerRule, `
+                                InsertStringPseudoRandomly
