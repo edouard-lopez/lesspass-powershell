@@ -21,37 +21,64 @@ Describe 'Rendder Password' {
             GetConfiguredRules $PasswordProfile | Sort-Object | Should -Be @("symbols", "uppercase")
         }
     }
+
+    Context "GetSetOfCharacters" {
+        $CharacterSubsets = [ordered]@{
+            lowercase = "abcdefghijklmnopqrstuvwxyz"
+            uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            digits    = "0123456789"
+            symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
+        }
+
+        It "get set of characters without rule" {
+            GetSetOfCharacters | Should -Be "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!`"#$%&'()*+,-./:;<=>?@[\]^_``{|}~"
+        }
+
+        It "get set of characters with single rule: <rule>"-TestCases @(
+            @{rule = "lowercase" }
+            @{rule = "uppercase" }
+            @{rule = "digits" }
+            @{rule = "symbols" }
+         ) {
+            param($rule)
+            GetSetOfCharacters @($rule) | Should -Be $CharacterSubsets.$rule
+
+        }
+        It "get set of characters with several rules" {
+            GetSetOfCharacters @("lowercase", "digits") | Should -Be "abcdefghijklmnopqrstuvwxyz0123456789"
+        }
+    }
 }
 
 Describe 'Password' {
     Context "Compute Entropy" {
-        It "as a lower case hexadecimal string" {
-            $PasswordProfile = @{
-                site      = "example.org"
-                login     = "contact@example.org"
-                counter   = 1
-            }
-            $MasterPassword = "password"
+        # It "as a lower case hexadecimal string" {
+        #     $PasswordProfile = @{
+        #         site      = "example.org"
+        #         login     = "contact@example.org"
+        #         counter   = 1
+        #     }
+        #     $MasterPassword = "password"
 
-            CalcEntropy $PasswordProfile $MasterPassword | Should -Be 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
-        }
+        #     CalcEntropy $PasswordProfile $MasterPassword | Should -Be 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
+        # }
     }
     Context "Generate" {
-        It 'with profile #1' {
-            $PasswordProfile = @{
-                site      = "example.org"
-                login     = "contact@example.org"
-                lowercase = $True
-                uppercase = $True
-                digits    = $True
-                symbols   = $True
-                length    = 16
-                counter   = 1
-            }
-            $MasterPassword = "password"
+        # It 'with profile #1' {
+        #     $PasswordProfile = @{
+        #         site      = "example.org"
+        #         login     = "contact@example.org"
+        #         lowercase = $True
+        #         uppercase = $True
+        #         digits    = $True
+        #         symbols   = $True
+        #         length    = 16
+        #         counter   = 1
+        #     }
+        #     $MasterPassword = "password"
 
-            GeneratePassword $PasswordProfile $MasterPassword | Should -Be "WHLpUL)e00[iHR+w"
-        }
+        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "WHLpUL)e00[iHR+w"
+        # }
 
         # It 'with profile #2' {
         #     $PasswordProfile = @{
