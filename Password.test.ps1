@@ -26,7 +26,7 @@ Describe 'Rendder Password' {
 Describe 'Password' {
     Context "Compute Entropy" {
         It "as a lower case hexadecimal string" {
-            $PasswordProfile = [PSCustomObject]@{
+            $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
                 counter   = 1
@@ -38,7 +38,6 @@ Describe 'Password' {
     }
     Context "Generate" {
         It 'with profile #1' {
-            $PasswordProfile = [PSCustomObject]@{
                 site      = "example.org"
                 login     = "contact@example.org"
                 lowercase = $True
@@ -49,12 +48,13 @@ Describe 'Password' {
                 counter   = 1
             }
             $MasterPassword = "password"
+    #         $PasswordProfile = @{
 
             GeneratePassword $PasswordProfile $MasterPassword | Should -Be "WHLpUL)e00[iHR+w"
         }
 
         # It 'with profile #2' {
-        #     $PasswordProfile = [PSCustomObject]@{
+        #     $PasswordProfile = @{
         #         site      = "example.org"
         #         login     = "contact@example.org"
         #         lowercase = $True
@@ -70,7 +70,7 @@ Describe 'Password' {
         # }
 
         # It 'with profile #3' {
-        #     $PasswordProfile = [PSCustomObject]@{
+        #     $PasswordProfile = @{
         #         site      = "example.org"
         #         login     = "contact@example.org"
         #         lowercase = $False
@@ -86,7 +86,7 @@ Describe 'Password' {
         # }
 
         # It 'with profile #4' {
-        #     $PasswordProfile = [PSCustomObject]@{
+        #     $PasswordProfile = @{
         #         site      = "example.org"
         #         login     = "contact@example.org"
         #         lowercase = $True
@@ -102,7 +102,7 @@ Describe 'Password' {
         # }
 
         # It 'with profile NRT 328' {
-        #     $PasswordProfile = [PSCustomObject]@{
+        #     $PasswordProfile = @{
         #         site      = "site"
         #         login     = "login"
         #         lowercase = $True
