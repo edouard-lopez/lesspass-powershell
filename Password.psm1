@@ -1,4 +1,4 @@
-$CharacterSubsets = @{
+$CharacterSubsets = [ordered]@{
     lowercase = "abcdefghijklmnopqrstuvwxyz"
     uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     digits    = "0123456789"
@@ -41,13 +41,34 @@ function CalcEntropy {
     }
 }
 
+function GetConfiguredRules {
+    param(
+        $PasswordProfile
+    )
+    process{
+        $Rules = @("lowercase", "uppercase", "digits", "symbols")
+        $ruleset = @()
 
-# function GetSetOfCharacters {
-#     param(
-#         $Rules=$null
-#     )
-#     process{}
-# }
+        return $PasswordProfile.Keys | Where-Object { $PasswordProfile.$_ -contains $Rules }
+    }
+}
+
+function GetSetOfCharacters {
+    param(
+        $Rules=@()
+    )
+    process{
+        if ($Rules.Count -eq 0) {
+            return $CharacterSubsets.Values -join ''
+        }
+
+        $SetOfCharacters = ""
+        foreach ($rule in $Rules) {
+            $SetOfCharacters += $CharacterSubsets.$rule
+        }
+        return $SetOfCharacters
+    }
+}
 # function ConsumeEntropy {
 #     param(
 #         [String]$GeneratedPassword, 
@@ -72,23 +93,15 @@ function CalcEntropy {
 #     )
 #     process{}
 # }
-function GetConfiguredRules {
-    param(
-        $PasswordProfile
-    )
-    process{
-        $Rules = @("lowercase", "uppercase", "digits", "symbols")
-        $ruleset = @()
-
-        return $PasswordProfile.Keys | Where-Object { $PasswordProfile.$_ -contains $Rules }
-    }
-}
 function RenderPassword {
     param(
         [String]$Entropy, 
         $PasswordProfile
     )
-    process{}
+    process{
+        $Rules = GetConfiguredRules $PasswordProfile
+        $SetOfCharacters = GetSetOfCharacters $Rules
+    }
 }
 function GeneratePassword {
     param(
@@ -98,10 +111,8 @@ function GeneratePassword {
     process {
         $Entropy = CalcEntropy $PasswordProfile $MasterPassword
 
-        $Result = RenderPassword $Entropy $PasswordProfile
-
-        return 'whatever'
+        return RenderPassword $Entropy $PasswordProfile
     }
 }
 
-Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules
+Export-ModuleMember -Function CalcEntropy, GeneratePassword, GetConfiguredRules, GetSetOfCharacters
