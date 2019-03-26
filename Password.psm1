@@ -1,4 +1,4 @@
-$CharacterSubsets = [PSCustomObject]@{
+$CharacterSubsets = @{
     lowercase = "abcdefghijklmnopqrstuvwxyz"
     uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     digits    = "0123456789"

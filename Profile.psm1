@@ -15,7 +15,7 @@ function New-Profile {
         $counter=1
         # $prompt=$true
     )
-    $profile = [PSCustomObject]@{
+    $profile = @{
         lowercase = !$noLowercase
         uppercase = !$noUppercase
         digits    = !$noDigits

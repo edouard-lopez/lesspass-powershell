@@ -17,7 +17,7 @@ Describe 'Profile' {
             @{property = "login"}
         ) {
             param($property)
-            ($profile | Get-Member -MemberType NoteProperty).Name | should -Contain ($property)
+            $profile.keys | Should -Contain $property
         }
 
         It 'contains given `site` value' {
