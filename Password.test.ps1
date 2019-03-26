@@ -18,7 +18,7 @@ Describe 'Rendder Password' {
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("uppercase", "symbols")
+            GetConfiguredRules $PasswordProfile | Sort-Object | Should -Be @("symbols", "uppercase")
         }
     }
 }
@@ -38,6 +38,7 @@ Describe 'Password' {
     }
     Context "Generate" {
         It 'with profile #1' {
+            $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
                 lowercase = $True
@@ -48,7 +49,6 @@ Describe 'Password' {
                 counter   = 1
             }
             $MasterPassword = "password"
-    #         $PasswordProfile = @{
 
             GeneratePassword $PasswordProfile $MasterPassword | Should -Be "WHLpUL)e00[iHR+w"
         }
