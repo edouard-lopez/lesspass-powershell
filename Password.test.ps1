@@ -44,6 +44,7 @@ Describe 'Rendder Password' {
             GetSetOfCharacters @($rule) | Should -Be $CharacterSubsets.$rule
 
         }
+
         It "get set of characters with several rules" {
             GetSetOfCharacters @("lowercase", "digits") | Should -Be "abcdefghijklmnopqrstuvwxyz0123456789"
         }
@@ -57,16 +58,17 @@ Describe 'Rendder Password' {
         $SetOfCharacters = "abcdefghijklmnopqrstuvwxyz0123456789"
         $MaxLength = 12
 
-        $generated_password, $remaining_entropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
+        $GeneratedPassword, $RemainingEntropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
 
         It "returns generated password value" {
-            $generated_password | Should -Be "gsrwvjl3d0sn"
+            $GeneratedPassword | Should -Be "gsrwvjl3d0sn"
         }
 
         It "returns the remaining entropy" {
-            $remaining_entropy | Should -Be "21019920789038193790619410818194537836313158091882651458040"
+            $RemainingEntropy | Should -Be "21019920789038193790619410818194537836313158091882651458040"
         }
     }
+
     Context "GetOneCharPerRule" {
         [BigInt]$Entropy = "21019920789038193790619410818194537836313158091882651458040"
         
@@ -80,6 +82,14 @@ Describe 'Rendder Password' {
             | Should -Be "a0", "80845849188608437656228503146902068601204454199548659454"
         }
     }
+
+    Context "InsertStringPseudoRandomly" {
+        It "add new characters" {
+            [BigInt]$Entropy = "80845849188608437656228503146902068601204454199548659454"
+            InsertStringPseudoRandomly "gsrwvjl3d0sn" $Entropy "a0" | Should -Be "gsrwvjl03d0asn"
+        }
+    }
+
 }
 
 Describe 'Password' {
