@@ -139,6 +139,8 @@ function RenderPassword {
         $Password, $PasswordEntropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
 
         $CharactersToAdd, $CharacterEntropy = GetOneCharPerRule $PasswordEntropy $Rules
+
+        return InsertStringPseudoRandomly $Password $CharacterEntropy $CharactersToAdd
     }
 }
 
@@ -160,4 +162,5 @@ Export-ModuleMember -Function   CalcEntropy, `
                                 GetSetOfCharacters, `
                                 ConsumeEntropy, `
                                 GetOneCharPerRule, `
-                                InsertStringPseudoRandomly
+                                InsertStringPseudoRandomly, `
+                                RenderPassword

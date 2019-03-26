@@ -90,6 +90,21 @@ Describe 'Rendder Password' {
         }
     }
 
+    Context "RenderPassword" {
+        $PasswordProfile = @{
+            site      = "example.org"
+            login     = "contact@example.org"
+            lowercase = $True
+            digits    = $True
+            length    = 14
+            counter   = 1
+        }
+        $MasterPassword = "password"
+        $Entropy = CalcEntropy $PasswordProfile $MasterPassword
+        It "is correct" {
+            RenderPassword $Entropy $PasswordProfile | Should -Be "gsrwvjl03d0asn"
+        }
+    }
 }
 
 Describe 'Password' {
