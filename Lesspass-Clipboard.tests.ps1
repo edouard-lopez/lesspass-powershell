@@ -1,6 +1,4 @@
-Import-Module $PSScriptRoot/Clipboard.psm1 -Force  # force code to be reloaded
-
-Clear-Host
+Import-Module $PSScriptRoot/Lesspass-Clipboard.psm1 -Force  # force code to be reloaded
 
 Describe 'Clipboard' {
     Context "Check" {
