@@ -48,7 +48,7 @@ function GetConfiguredRules {
     process{
         $Rules = @("lowercase", "uppercase", "digits", "symbols")
 
-        return $PasswordProfile.Keys | Where-Object { $PasswordProfile.$_ -contains $Rules }
+        return $Rules | Where-Object { $_ -in $PasswordProfile.Keys -and $PasswordProfile.$_ }
     }
 }
 

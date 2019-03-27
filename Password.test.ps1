@@ -18,7 +18,18 @@ Describe 'Rendder Password' {
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Sort-Object | Should -Be @("symbols", "uppercase")
+            GetConfiguredRules $PasswordProfile | Should -Be @("uppercase", "symbols")
+        }
+
+        It "preserve rules order" {
+            $PasswordProfile = @{
+                lowercase = $True
+                uppercase = $True
+                digits    = $True
+                symbols   = $True
+            }
+            
+            GetConfiguredRules $PasswordProfile | Should -Be @("lowercase", "uppercase", "digits", "symbols")
         }
     }
 
