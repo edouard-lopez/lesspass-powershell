@@ -4,7 +4,7 @@
 RootModule = 'Lesspass.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.1.6'
+ModuleVersion = '0.1.1.8'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -43,7 +43,7 @@ PowerShellVersion = '5.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('ClipboardText')
+# RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -115,6 +115,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '-'
+
+        # External dependent modules of this module
+        ExternalModuleDependencies = 'ClipboardText'
 
     } # End of PSData hashtable
 
