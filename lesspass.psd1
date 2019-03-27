@@ -1,10 +1,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'lesspass.psm1'
+RootModule = 'Lesspass.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1.2'
+ModuleVersion = '0.1.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -22,7 +22,7 @@ CompanyName = ''
 Copyright = 'MIT'
 
 # Description of the functionality provided by this module
-Description = 'lesspass Profile manager'
+Description = 'lesspass Password manager'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0'
@@ -77,10 +77,10 @@ AliasesToExport = '*'
 # DscResourcesToExport = @()
 
 # List of all modules packaged with this module
-ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
+# ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # List of all files packaged with this module
-FileList = 'lesspass.psd1','lesspass.psm1','Profile.psm1','Validator.psm1','Clipboard.psm1'
+FileList = 'lesspass.psd1','lesspass.psm1','Lesspass-Profile.psm1','Lesspass-Validator.psm1','Lesspass-Clipboard.psm1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{

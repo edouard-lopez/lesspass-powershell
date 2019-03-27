@@ -1,8 +1,8 @@
 function New-Profile {
     param(
-        $site,
-        $login,
-        $master_password,
+        [string]$site,
+        [string]$login,
+        [string]$master_password,
         [Alias('l')][Switch]$lowercase=$false,
         [Alias('u')][Switch]$uppercase=$false,
         [Alias('d')][Switch]$digits=$false,
