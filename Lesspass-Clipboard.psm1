@@ -9,5 +9,4 @@ function Get-SystemCopyCommand {
         throw " * To use the option -C or -Clipboard you need `xclip` on Linux."
     }
 }
-
 Export-ModuleMember -Function Get-SystemCopyCommand

@@ -27,6 +27,10 @@ function Get-LessPass {
         if ($Error) {
             Write-Host $HelpMessage
         }
+
+        
+        $x = (New-Profile @PSBoundParameters)
+        return GeneratePassword -PasswordProfile $x[0] -MasterPassword $master_password
         # todo: if -Prompt flag is present copy to clipboard
         # todo: request master_password if not provided
         # todo: generate password
