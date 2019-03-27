@@ -1,6 +1,4 @@
-Import-Module $PSScriptRoot/Validator.psm1 -Force  # force code to be reloaded
-
-Clear-Host
+Import-Module $PSScriptRoot/Lesspass-Validator.psm1 -Force  # force code to be reloaded
 
 Describe 'Validator' {
     Context "Simple rule" {
