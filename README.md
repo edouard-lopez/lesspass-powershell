@@ -4,7 +4,10 @@
 
 ## Install
 
-    PS> Install-Module LessPass -Scope CurrentUser
+:skull: Not published yet
+<!-- 
+    PS> Install-Module LessPass -Scope CurrentUser 
+-->
 
 ## Usage
 
