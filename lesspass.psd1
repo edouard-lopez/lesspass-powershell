@@ -4,7 +4,7 @@
 RootModule = 'Lesspass.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.1.2'
+ModuleVersion = '0.1.1.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -13,10 +13,10 @@ ModuleVersion = '0.1.1.2'
 GUID = '9f32668d-508f-4640-bbdc-cdd4adbc4237'
 
 # Author of this module
-Author = 'Alban Lopez, Édouard Lopez'
+Author = 'Édouard Lopez, Alban Lopez'
 
 # Company or vendor of this module
-CompanyName = ''
+CompanyName = 'LessPass'
 
 # Copyright statement for this module
 Copyright = 'MIT'
@@ -58,20 +58,25 @@ RequiredModules = @('ClipboardText')
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
+NestedModules = @(
+    'Lesspass-Clipboard.psm1', 
+    'Lesspass-Password.psm1', 
+    'Lesspass-Profile.psm1', 
+    'Lesspass-Validator.psm1'
+)
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 # FunctionsToExport = '*'
 FunctionsToExport = 'LessPass'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = @()
 
 # Variables to export from this module
 # VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -80,7 +85,16 @@ AliasesToExport = '*'
 # ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # List of all files packaged with this module
-FileList = 'lesspass.psd1','lesspass.psm1','Lesspass-Profile.psm1','Lesspass-Validator.psm1','Lesspass-Clipboard.psm1'
+FileList =  'Lesspass.psd1', 
+            'Lesspass.psm1', 
+            'Lesspass-Clipboard.psm1', 
+            'Lesspass-Clipboard.tests.ps1', 
+            'Lesspass-Password.psm1', 
+            'Lesspass-Password.tests.ps1', 
+            'Lesspass-Profile.psm1', 
+            'Lesspass-Profile.tests.ps1', 
+            'Lesspass-Validator.psm1', 
+            'Lesspass-Validator.tests.ps1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
@@ -91,7 +105,7 @@ PrivateData = @{
         Tags = @('Password', 'PasswordGenerator', 'PasswordManager', 'lesspass')
 
         # A URL to the license for this module.
-        # LicenseUri = 'https://github.com/edouard-lopez/lesspass-powershell/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/edouard-lopez/lesspass-powershell/blob/master/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/edouard-lopez/lesspass-powershell'
