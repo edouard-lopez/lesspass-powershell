@@ -1,9 +1,9 @@
 function LessPass {
     [CmdletBinding()]
     param(
-        $site,
-        $login,
-        $master_password,
+        [string]$site,
+        [string]$login,
+        [string]$master_password,
         [Alias('l')][Switch]$lowercase=$false,
         [Alias('u')][Switch]$uppercase=$false,
         [Alias('d')][Switch]$digits=$false,
@@ -22,7 +22,7 @@ function LessPass {
             (Get-Module Lesspass).Version | Write-Host
             return 
         }
-        $Error, $HelpMessage = Confirm-Arguments @args
+        $Error, $HelpMessage = Confirm-Arguments @PSBoundParameters
         if ($Error) {
             Write-Host $HelpMessage
         }
