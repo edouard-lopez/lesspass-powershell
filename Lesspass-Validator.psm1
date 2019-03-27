@@ -1,7 +1,7 @@
 
 function Confirm-Arguments {
     param(
-        $site,
+        [string]$site,
         [Alias('l')][Switch]$lowercase=$false,
         [Alias('nl')][Switch]$noLowercase=$false,
         [Alias('u')][Switch]$uppercase=$false,
