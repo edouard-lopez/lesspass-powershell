@@ -1,4 +1,4 @@
-function Get-SystemCopyCommand {
+function Get-SystemCopyCommand() {
     if ($IsWindows -and !(Get-Command "clip.exe" -ErrorAction SilentlyContinue)) {
         throw " * To use the option -C or -Clipboard you need `clip.exe` on Windows."
     }
