@@ -31,7 +31,7 @@ Describe 'Rendder Password' {
         }
 
         It "get set of characters without rule" {
-            GetSetOfCharacters | Should -BeExactly "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!`"#$%&'()*+,-./:;<=>?@[\]^_``{|}~"
+            GetSetOfCharacters @() | Should -BeExactly "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!`"#$%&'()*+,-./:;<=>?@[\]^_``{|}~"
         }
 
         It "get set of characters with single rule: <rule>"-TestCases @(
