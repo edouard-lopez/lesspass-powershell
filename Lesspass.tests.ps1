@@ -1,6 +1,9 @@
-Import-module .\Lesspass.psd1 -Force
+Import-module $PSScriptRoot/Lesspass.psd1 -Force
 
-& '.\Lesspass-Clipboard.tests.ps1'
-& '.\Lesspass-Password.tests.ps1'
-& '.\Lesspass-Profile.tests.ps1'
-& '.\Lesspass-Validator.tests.ps1'
+Describe 'Get-LessPass' {
+    Context "Simple rule" {
+        It 'Run' {
+            Get-LessPass "site" "login" "masterpassword"
+        }
+    }
+}
