@@ -31,7 +31,7 @@ Describe 'Rendder Password' {
         }
 
         It "get set of characters without rule" {
-            GetSetOfCharacters | Should -Be "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!`"#$%&'()*+,-./:;<=>?@[\]^_``{|}~"
+            GetSetOfCharacters | Should -BeExactly "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!`"#$%&'()*+,-./:;<=>?@[\]^_``{|}~"
         }
 
         It "get set of characters with single rule: <rule>"-TestCases @(
@@ -41,12 +41,12 @@ Describe 'Rendder Password' {
             @{rule = "symbols" }
          ) {
             param($rule)
-            GetSetOfCharacters @($rule) | Should -Be $CharacterSubsets.$rule
+            GetSetOfCharacters @($rule) | Should -BeExactly $CharacterSubsets.$rule
 
         }
 
         It "get set of characters with several rules" {
-            GetSetOfCharacters @("lowercase", "digits") | Should -Be "abcdefghijklmnopqrstuvwxyz0123456789"
+            GetSetOfCharacters @("lowercase", "digits") | Should -BeExactly "abcdefghijklmnopqrstuvwxyz0123456789"
         }
     }
 
@@ -61,7 +61,7 @@ Describe 'Rendder Password' {
         $GeneratedPassword, $RemainingEntropy = ConsumeEntropy $GeneratedPassword $EntropyAsInt $SetOfCharacters $MaxLength
 
         It "returns generated password value" {
-            $GeneratedPassword | Should -Be "gsrwvjl3d0sn"
+            $GeneratedPassword | Should -BeExactly "gsrwvjl3d0sn"
         }
 
         It "returns the remaining entropy" {
@@ -74,19 +74,19 @@ Describe 'Rendder Password' {
         
         It "get one char per rule without rules" {
             GetOneCharPerRule $Entropy @() `
-            | Should -Be "", "21019920789038193790619410818194537836313158091882651458040"
+            | Should -BeExactly "", "21019920789038193790619410818194537836313158091882651458040"
         }
 
         It "get one char per rule with several rules" {
             GetOneCharPerRule $Entropy @("lowercase", "digits") `
-            | Should -Be "a0", "80845849188608437656228503146902068601204454199548659454"
+            | Should -BeExactly "a0", "80845849188608437656228503146902068601204454199548659454"
         }
     }
 
     Context "InsertStringPseudoRandomly" {
         It "add new characters" {
             [BigInt]$Entropy = "80845849188608437656228503146902068601204454199548659454"
-            InsertStringPseudoRandomly "gsrwvjl3d0sn" $Entropy "a0" | Should -Be "gsrwvjl03d0asn"
+            InsertStringPseudoRandomly "gsrwvjl3d0sn" $Entropy "a0" | Should -BeExactly "gsrwvjl03d0asn"
         }
     }
 
@@ -102,14 +102,14 @@ Describe 'Rendder Password' {
         $MasterPassword = "password"
         $Entropy = CalcEntropy $PasswordProfile $MasterPassword
         It "is correct" {
-            RenderPassword $Entropy $PasswordProfile | Should -Be "gsrwvjl03d0asn"
+            RenderPassword $Entropy $PasswordProfile | Should -BeExactly "gsrwvjl03d0asn"
         }
     }
 }
 
 Describe 'Password' {
-    Context "Compute Entropy" {
-        It "as a lower case hexadecimal string" {
+    Context "CalcEntropy" {
+        It "Computes entropy as a lower case hexadecimal string" {
             $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
@@ -117,88 +117,88 @@ Describe 'Password' {
             }
             $MasterPassword = "password"
 
-            CalcEntropy $PasswordProfile $MasterPassword | Should -Be 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
+            CalcEntropy $PasswordProfile $MasterPassword | Should -BeExactly 'dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e'
         }
     }
     Context "Generate" {
-        # It 'with profile #1' {
-        #     $PasswordProfile = @{
-        #         site      = "example.org"
-        #         login     = "contact@example.org"
-        #         lowercase = $True
-        #         uppercase = $True
-        #         digits    = $True
-        #         symbols   = $True
-        #         length    = 16
-        #         counter   = 1
-        #     }
-        #     $MasterPassword = "password"
+        It 'with profile #1' {
+            $PasswordProfile = @{
+                site      = "example.org"
+                login     = "contact@example.org"
+                lowercase = $True
+                uppercase = $True
+                digits    = $True
+                symbols   = $True
+                length    = 16
+                counter   = 1
+            }
+            $MasterPassword = "password"
 
-        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "WHLpUL)e00[iHR+w"
-        # }
+            GeneratePassword $PasswordProfile $MasterPassword | Should -BeExactly "WHLpUL)e00[iHR+w"
+        }
 
-        # It 'with profile #2' {
-        #     $PasswordProfile = @{
-        #         site      = "example.org"
-        #         login     = "contact@example.org"
-        #         lowercase = $True
-        #         uppercase = $True
-        #         digits    = $True
-        #         symbols   = $false
-        #         length    = 14
-        #         counter   = 2
-        #     }
-        #     $MasterPassword = "password"
+        It 'with profile #2' {
+            $PasswordProfile = @{
+                site      = "example.org"
+                login     = "contact@example.org"
+                lowercase = $True
+                uppercase = $True
+                digits    = $True
+                symbols   = $false
+                length    = 14
+                counter   = 2
+            }
+            $MasterPassword = "password"
             
-        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "MBAsB7b1Prt8Sl"
-        # }
+            GeneratePassword $PasswordProfile $MasterPassword | Should -BeExactly "MBAsB7b1Prt8Sl"
+        }
 
-        # It 'with profile #3' {
-        #     $PasswordProfile = @{
-        #         site      = "example.org"
-        #         login     = "contact@example.org"
-        #         lowercase = $False
-        #         uppercase = $False
-        #         digits    = $True
-        #         symbols   = $False
-        #         length    = 16
-        #         counter   = 1
-        #     }
-        #     $MasterPassword = "password"
+        It 'with profile #3' {
+            $PasswordProfile = @{
+                site      = "example.org"
+                login     = "contact@example.org"
+                lowercase = $False
+                uppercase = $False
+                digits    = $True
+                symbols   = $False
+                length    = 16
+                counter   = 1
+            }
+            $MasterPassword = "password"
 
-        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "8742368585200667"
-        # }
+            GeneratePassword $PasswordProfile $MasterPassword | Should -BeExactly "8742368585200667"
+        }
 
-        # It 'with profile #4' {
-        #     $PasswordProfile = @{
-        #         site      = "example.org"
-        #         login     = "contact@example.org"
-        #         lowercase = $True
-        #         uppercase = $True
-        #         digits    = $False
-        #         symbols   = $True
-        #         length    = 16
-        #         counter   = 1
-        #     }
-        #     $MasterPassword = "password"
+        It 'with profile #4' {
+            $PasswordProfile = @{
+                site      = "example.org"
+                login     = "contact@example.org"
+                lowercase = $True
+                uppercase = $True
+                digits    = $False
+                symbols   = $True
+                length    = 16
+                counter   = 1
+            }
+            $MasterPassword = "password"
 
-        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "s>{F}RwkN/-fmM.X"
-        # }
+            GeneratePassword $PasswordProfile $MasterPassword | Should -BeExactly "s>{F}RwkN/-fmM.X"
+        }
 
-        # It 'with profile NRT 328' {
-        #     $PasswordProfile = @{
-        #         site      = "site"
-        #         login     = "login"
-        #         lowercase = $True
-        #         uppercase = $True
-        #         digits    = $True
-        #         symbols   = $True
-        #         length    = 16
-        #         counter   = 1
-        #     }
-        #     $MasterPassword = "test"
+        It 'with profile NRT 328' {
+            $PasswordProfile = @{
+                site      = "site"
+                login     = "login"
+                lowercase = $True
+                uppercase = $True
+                digits    = $True
+                symbols   = $True
+                length    = 16
+                counter   = 10
+            }
+            $MasterPassword = "test"
 
-        #     GeneratePassword $PasswordProfile $MasterPassword | Should -Be "XFt0F*,r619:+}[."
-        # }
+            GeneratePassword $PasswordProfile $MasterPassword | Should -BeExactly "XFt0F*,r619:+}[."
+        }
     }
 }

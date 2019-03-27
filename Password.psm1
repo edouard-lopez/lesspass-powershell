@@ -37,7 +37,7 @@ function CalcEntropy {
 
         $EntropyAsBytes = PBKDF2_by_medo64 $HashAlgorithm $MasterPasswordAsBytes $SaltAsBytes $Iterations $DerivedKeyLength
 
-        return ($EntropyAsBytes | ForEach-Object ToString X2) -join ''
+        return ($EntropyAsBytes | ForEach-Object ToString X2).ToLower() -join ''
     }
 }
 
@@ -131,7 +131,7 @@ function RenderPassword {
     )
     process{
         $GeneratedPassword = ""
-        $EntropyAsInt = [System.Numerics.BigInteger]::Parse('0'+$Entropy, 'AllowHexSpecifier')
+        $EntropyAsInt = [BigInt]::Parse('0'+$Entropy, 'AllowHexSpecifier')
         $Rules = GetConfiguredRules $PasswordProfile
         $SetOfCharacters = GetSetOfCharacters $Rules
         $MaxLength = $PasswordProfile.Length - $Rules.count
