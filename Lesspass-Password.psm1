@@ -53,7 +53,8 @@ function GetConfiguredRules {
 
 function GetSetOfCharacters {
     param(
-        $Rules=@()
+        [ValidateSet('lowercase','uppercase','digits','symbols')]
+            [string[]]$Rules=@()
     )
     process{
         if ($Rules.Count -eq 0) {
@@ -91,7 +92,8 @@ function ConsumeEntropy {
 function GetOneCharPerRule {
     param(
         [BigInt]$Entropy, 
-        $Rules=@()
+        [ValidateSet('lowercase','uppercase','digits','symbols')]
+            [string[]]$Rules=@()
     )
     process{
         $OneCharPerRules = ""
