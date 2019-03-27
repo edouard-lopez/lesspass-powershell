@@ -114,9 +114,10 @@ function InsertStringPseudoRandomly {
         foreach ($letter in $String.ToCharArray()) {
             [Int]$Remainder = 0
             $Quotient = [BigInt]::DivRem( $Entropy, $GeneratedPassword.Length, [ref]$Remainder )
-            $BeforeInsertion = $GeneratedPassword[0..($Remainder -1)] -join ''
-            $AfterInsertion = $GeneratedPassword[$Remainder..($GeneratedPassword.Length -1)] -join ''
-            $GeneratedPassword = $BeforeInsertion,$letter,$AfterInsertion -join ''
+            $Before = $GeneratedPassword.Substring(0, $Remainder)
+            $After = $GeneratedPassword.Substring($Remainder)
+
+            $GeneratedPassword = $Before,$letter,$After -join ''
             $Entropy = $Quotient
         }
         return $GeneratedPassword
