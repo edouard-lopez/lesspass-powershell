@@ -1,5 +1,6 @@
-function LessPass {
+function Get-LessPass {
     [CmdletBinding()]
+    [alias("lesspass")]
     param(
         [string]$site,
         [string]$login,
@@ -125,4 +126,4 @@ Only digits and length of 8
 #>
 }
 
-Export-ModuleMember -Function LessPass
+Export-ModuleMember -Function Get-LessPass -Alias lesspass
