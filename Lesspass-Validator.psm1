@@ -33,5 +33,4 @@ function Confirm-Arguments {
         Get-SystemCopyCommand
     }
 }
-
 Export-ModuleMember -Function Confirm-Arguments

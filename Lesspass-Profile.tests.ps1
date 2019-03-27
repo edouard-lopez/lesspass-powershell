@@ -1,5 +1,4 @@
 Import-Module $PSScriptRoot/Lesspass-Profile.psm1 -Force  # force code to be reloaded
-
 Describe 'Profile' {
     Context "Create default profile" {
         ($profile, $master_pasword) = New-Profile "site.org" "my-login"
