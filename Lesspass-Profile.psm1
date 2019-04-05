@@ -33,5 +33,5 @@ function New-Profile {
         $profile.symbols = $symbols
            
     }
-    return $profile, $master_password
+    return $profile
 }
