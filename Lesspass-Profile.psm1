@@ -11,7 +11,7 @@ function New-Profile {
         [Alias('nu')][Switch]$noUppercase=$false,
         [Alias('nd')][Switch]$noDigits=$false,
         [Alias('ns')][Switch]$noSymbols=$false,
-        $length=1,
+        $length=16,
         $counter=1
         # $prompt=$true
     )
