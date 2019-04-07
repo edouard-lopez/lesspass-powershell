@@ -22,7 +22,7 @@ CompanyName = 'LessPass'
 Copyright = 'MIT'
 
 # Description of the functionality provided by this module
-Description = 'lesspass Password manager'
+Description = 'LessPass: Stateless Password Manager'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0'

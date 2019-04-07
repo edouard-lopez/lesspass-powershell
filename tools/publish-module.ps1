@@ -4,4 +4,4 @@ $Env:PSModulePath = $Env:PSModulePath + ":$ProjectDirectory"
 Publish-Module `
     -Name "Lesspass" `
     -Repository "PSGallery" `
-    -NuGetApiKey $Env:PSGALLERY_API_KEY `
+    -NuGetApiKey $Env:PSGALLERY_API_KEY
