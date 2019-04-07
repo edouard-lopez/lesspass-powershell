@@ -110,7 +110,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/edouard-lopez/lesspass-powershell'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://raw.githubusercontent.com/lesspass/lesspass/master/packages/lesspass-pure/src/images/favicon.ico'
+        IconUri = 'https://github.com/lesspass/lesspass/raw/master/packages/lesspass-web-extension/extension/icons/icon-128x128.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = '-'
