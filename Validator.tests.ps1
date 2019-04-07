@@ -1,4 +1,4 @@
-Import-Module $PSScriptRoot/Lesspass-Validator.psm1 -Force  # force code to be reloaded
+Import-Module $PSScriptRoot/Validator.psm1 -Force  # force code to be reloaded
 Describe 'Validator' {
     Context "Simple rule" {
         It '-Lowercase is allowed' {

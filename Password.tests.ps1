@@ -1,4 +1,4 @@
-Import-Module $PSScriptRoot/Lesspass-Password.psm1 -Force  # force code to be reloaded
+Import-Module $PSScriptRoot/Password.psm1 -Force  # force code to be reloaded
 Describe 'Rendder Password' {
     Context "GetConfiguredRules" {
         It "is empty when no rules in profile" {
