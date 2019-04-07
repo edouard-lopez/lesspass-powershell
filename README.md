@@ -1,22 +1,27 @@
 # Lesspass-powershell
 
-> Powershell implementation of lesspass
+> LessPass open source password manager (powershell implementation)
 
 ## Install
 
-:skull: Not published yet
-<!-- 
-    PS> Install-Module LessPass -Scope CurrentUser 
--->
+```powershell
+PS> Install-Module -Name Lesspass
+```
 
 ## Usage
 
-    PS> LessPass
+```powershell
+PS> LessPass
+```
 
 **Help**
 
-    PS> LessPass -?
+```powershell
+PS> LessPass -?
+```
 
 ## Test
 
-    make test
+```make
+make test
+```
