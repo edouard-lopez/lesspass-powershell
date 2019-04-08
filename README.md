@@ -1,8 +1,10 @@
 > ##### ✋ Psst! Create [issue on the lesspass/lesspass](https://github.com/lesspass/lesspass/issues/new) repo as I will [merge](https://github.com/lesspass/lesspass/issues/407) into it.
-> 
+ 
 # Lesspass-powershell
 
-> LessPass open source password manager (powershell implementation)
+> LessPass computes the same password given the same a `site`, `login` and a `master password`
+>
+> Privacy by default, Works offline, No sync, Visual fingerprint :closed_lock_with_key::heart::eyes:
 
 ## Install
 
@@ -16,13 +18,13 @@ PS> Install-Module -Name Lesspass
 PS> Get-LessPass "site" "login" "masterpassword"
 ```
 
-**Help**
+#### Help
 
 ```powershell
 PS> Get-LessPass -?
 ```
 
-**Syntax**
+#### Syntax
 
 ```powershell
 Get-LessPass
