@@ -15,7 +15,8 @@ function Get-LessPass {
         [Alias('ns')][Switch]$noSymbols=$false,
         $length=1,
         $counter=1,
-        # $prompt=$true
+        # $prompt=$true,
+        # $clipboard=$true,
         [Switch]$version=$false
     )
     process {
