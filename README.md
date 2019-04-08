@@ -13,14 +13,15 @@ PS> Install-Module -Name Lesspass
 ## Usage
 
 ```powershell
-PS> LessPass
+PS> Get-LessPass "site" "login" "masterpassword"
 ```
 
 **Help**
 
 ```powershell
-PS> LessPass -?
+PS> Get-LessPass -?
 ```
+
 
 ## Test
 
