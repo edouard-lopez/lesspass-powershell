@@ -22,6 +22,28 @@ PS> Get-LessPass "site" "login" "masterpassword"
 PS> Get-LessPass -?
 ```
 
+**Syntax**
+
+```powershell
+Get-LessPass
+    -site <String>
+    -login <String>
+    -master_password <String>
+
+    [-lowercase]
+    [-uppercase]
+    [-digits]
+    [-symbols]
+    [-noLowercase]
+    [-noUppercase]
+    [-noDigits]
+    [-noSymbols]
+    [[-length] <Object>]
+    [[-counter] <Object>]
+
+    [-version]
+    [<CommonParameters>]
+```
 
 ## Test
 

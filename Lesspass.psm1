@@ -109,7 +109,7 @@ Get a new version for an existing password (default: 1)
 # lesspass version number
 
 .EXAMPLE
-lesspass site login masterpassword --no-symbols
+lesspass site login masterpassword -noSymbols
 
 No symbols
 
@@ -119,7 +119,7 @@ lesspass site login masterpassword -L -U -D
 No symbols shortcut
 
 .EXAMPLE
-lesspass site login masterpassword -D -L8
+lesspass site login masterpassword -D -L 8
 
 Only digits and length of 8
 
