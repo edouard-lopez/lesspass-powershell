@@ -84,16 +84,16 @@ AliasesToExport = 'lesspass'
 # ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # List of all files packaged with this module
-FileList =  'LessPass/src/Lesspass.psd1', 
-            'LessPass/src/Lesspass.psm1', 
-            'LessPass/src/Clipboard.psm1', 
-            'LessPass/src/Clipboard.tests.ps1', 
-            'LessPass/src/Password.psm1', 
-            'LessPass/src/Password.tests.ps1', 
-            'LessPass/src/Profile.psm1', 
-            'LessPass/src/Profile.tests.ps1', 
-            'LessPass/src/Validator.psm1', 
-            'LessPass/src/Validator.tests.ps1'
+FileList =  'Lesspass/src/Lesspass.psd1', 
+            'Lesspass/src/Lesspass.psm1', 
+            'Lesspass/src/Clipboard.psm1', 
+            'Lesspass/src/Clipboard.tests.ps1', 
+            'Lesspass/src/Password.psm1', 
+            'Lesspass/src/Password.tests.ps1', 
+            'Lesspass/src/Profile.psm1', 
+            'Lesspass/src/Profile.tests.ps1', 
+            'Lesspass/src/Validator.psm1', 
+            'Lesspass/src/Validator.tests.ps1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
