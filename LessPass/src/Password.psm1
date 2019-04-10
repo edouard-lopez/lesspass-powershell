@@ -14,7 +14,7 @@ function PBKDF2_by_medo64 {
         [Int]$DerivedKeyLength
     ) 
     process {
-        $SourcePBKDF2 = ((Get-Content -Path "$PSScriptRoot/PBKDF2_HMAC.cs") -join "`n")
+        $SourcePBKDF2 = ((Get-Content -Path "$PSScriptRoot/../lib/PBKDF2_HMAC.cs") -join "`n")
         Add-Type -TypeDefinition "$SourcePBKDF2" # -ReferencedAssemblies ([System.Security.Cryptography.HMAC].Assembly.Location),'System.IO'
         $Derivation = New-Object Medo.Security.Cryptography.Pbkdf2 @($HashAlgorithm, $MasterPasswordAsBytes, $SaltAsBytes, $Iterations)
 
