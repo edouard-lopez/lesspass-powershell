@@ -2,16 +2,16 @@
 function Confirm-Arguments {
     param(
         [string]$site,
-        [Alias('l')][Switch]$lowercase=$false,
-        [Alias('nl')][Switch]$noLowercase=$false,
-        [Alias('u')][Switch]$uppercase=$false,
-        [Alias('nu')][Switch]$noUppercase=$false,
-        [Alias('d')][Switch]$digits=$false,
-        [Alias('nd')][Switch]$noDigits=$false,
-        [Alias('s')][Switch]$symbols=$false,
-        [Alias('ns')][Switch]$noSymbols=$false,
-        [Switch]$prompt=$false,
-        [Switch]$clipboard=$false
+        [Alias('l')][Switch]$lowercase,
+        [Alias('nl')][Switch]$noLowercase,
+        [Alias('u')][Switch]$uppercase,
+        [Alias('nu')][Switch]$noUppercase,
+        [Alias('d')][Switch]$digits,
+        [Alias('nd')][Switch]$noDigits,
+        [Alias('s')][Switch]$symbols,
+        [Alias('ns')][Switch]$noSymbols,
+        [Switch]$prompt,
+        [Switch]$clipboard
     )
 
     if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
