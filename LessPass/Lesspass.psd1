@@ -59,10 +59,10 @@ PowerShellVersion = '5.0'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @(
-    'Clipboard.psm1', 
-    'Password.psm1', 
-    'Profile.psm1', 
-    'Validator.psm1'
+    'src/Clipboard.psm1', 
+    'src/Password.psm1', 
+    'src/Profile.psm1', 
+    'src/Validator.psm1'
 )
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
@@ -84,16 +84,16 @@ AliasesToExport = 'lesspass'
 # ModuleList = @('Profile.psm1','Validator.psm1','Clipboard.psm1')
 
 # List of all files packaged with this module
-FileList =  'Lesspass.psd1', 
-            'Lesspass.psm1', 
-            'Clipboard.psm1', 
-            'Clipboard.tests.ps1', 
-            'Password.psm1', 
-            'Password.tests.ps1', 
-            'Profile.psm1', 
-            'Profile.tests.ps1', 
-            'Validator.psm1', 
-            'Validator.tests.ps1'
+FileList =  'LessPass/src/Lesspass.psd1', 
+            'LessPass/src/Lesspass.psm1', 
+            'LessPass/src/Clipboard.psm1', 
+            'LessPass/src/Clipboard.tests.ps1', 
+            'LessPass/src/Password.psm1', 
+            'LessPass/src/Password.tests.ps1', 
+            'LessPass/src/Profile.psm1', 
+            'LessPass/src/Profile.tests.ps1', 
+            'LessPass/src/Validator.psm1', 
+            'LessPass/src/Validator.tests.ps1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
