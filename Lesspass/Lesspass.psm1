@@ -13,7 +13,7 @@ function Get-LessPass {
         [Alias('nu')][Switch]$noUppercase,
         [Alias('nd')][Switch]$noDigits,
         [Alias('ns')][Switch]$noSymbols,
-        $length=16,
+        [ValidateRange(5, 35)]$length=16,
         $counter=1,
         # $prompt,
         # $clipboard,

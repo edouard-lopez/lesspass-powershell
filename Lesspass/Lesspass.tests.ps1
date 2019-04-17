@@ -5,5 +5,10 @@ Describe 'Get-LessPass' {
         It 'Run' {
             Get-LessPass "site" "login" "masterpassword" | Should -BeExactly 'cp$=}`taN2LZ=PF@'
         }
+
+        It 'Expects length in [5-35]' {
+            {Get-LessPass "site" "login" "masterpassword" -Length 2} `
+            | Should -Throw "Cannot validate argument on parameter 'length'. The 2 argument is less than the minimum allowed range"
+        }
     }
 }
