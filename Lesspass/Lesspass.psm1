@@ -4,7 +4,7 @@ function Get-LessPass {
     param(
         [string]$site,
         [string]$login,
-        [string]$master_password,
+        [string][Parameter(Mandatory=$true)]$master_password,
         [Alias('l')][Switch]$lowercase,
         [Alias('u')][Switch]$uppercase,
         [Alias('d')][Switch]$digits,

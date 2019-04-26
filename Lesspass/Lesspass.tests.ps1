@@ -10,5 +10,9 @@ Describe 'Get-LessPass' {
             {Get-LessPass "site" "login" "masterpassword" -Length 2} `
             | Should -Throw "Cannot validate argument on parameter 'length'. The 2 argument is less than the minimum allowed range"
         }
+
+        It 'Prompt for MasterPassword when missing' {
+            (Get-Command Get-LessPass).Parameters['master_password'].Attributes.Mandatory | Should -Be $true
+        }
     }
 }
