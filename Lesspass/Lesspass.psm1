@@ -5,7 +5,7 @@ function Get-LessPass {
         [string]$site,
         [string]$login,
         [string][Parameter(Mandatory=$true)]$master_password,
-        [Alias('l')][Switch]$lowercase,
+        [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$uppercase,
         [Alias('d')][Switch]$digits,
         [Alias('s')][Switch]$symbols,
@@ -70,7 +70,7 @@ Master password used in password generation
 default to LESSPASS_MASTER_PASSWORD env variable or prompt
 
 .PARAMETER Lowercase
-Add lowercase in password
+Add Lowercase in password
 
 .PARAMETER Uppercase
 Add uppercase in password
@@ -82,7 +82,7 @@ Add digits in password
 Add symbols in password
 
 .PARAMETER NoLowercase
-Remove lowercase from password
+Remove Lowercase from password
 
 .PARAMETER NoUppercase
 Remove uppercase from password

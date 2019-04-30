@@ -3,7 +3,7 @@ function New-Profile {
         [string]$site,
         [string]$login,
         [string]$master_password,
-        [Alias('l')][Switch]$lowercase,
+        [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$uppercase,
         [Alias('d')][Switch]$digits,
         [Alias('s')][Switch]$symbols,
@@ -16,7 +16,7 @@ function New-Profile {
         # $prompt=$true
     )
     $profile = @{
-        lowercase = !$noLowercase
+        Lowercase = !$noLowercase
         uppercase = !$noUppercase
         digits    = !$noDigits
         symbols   = !$noSymbols
@@ -26,8 +26,8 @@ function New-Profile {
         login     = "$login"
     }
 
-    if ($lowercase -or $uppercase -or $digits -or $symbols) {
-        $profile.lowercase = $lowercase
+    if ($Lowercase -or $uppercase -or $digits -or $symbols) {
+        $profile.Lowercase = $Lowercase
         $profile.uppercase = $uppercase
         $profile.digits = $digits
         $profile.symbols = $symbols

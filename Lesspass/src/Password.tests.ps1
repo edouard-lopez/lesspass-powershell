@@ -9,7 +9,7 @@ Describe 'Rendder Password' {
 
         It "ignore disabled rules" {
             $PasswordProfile = @{
-                lowercase = $False
+                Lowercase = $False
                 uppercase = $True
                 digits    = $False
                 symbols   = $True
@@ -20,19 +20,19 @@ Describe 'Rendder Password' {
 
         It "preserve rules order" {
             $PasswordProfile = @{
-                lowercase = $True
+                Lowercase = $True
                 uppercase = $True
                 digits    = $True
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("lowercase", "uppercase", "digits", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "uppercase", "digits", "symbols")
         }
     }
 
     Context "GetSetOfCharacters" {
         $CharacterSubsets = [ordered]@{
-            lowercase = "abcdefghijklmnopqrstuvwxyz"
+            Lowercase = "abcdefghijklmnopqrstuvwxyz"
             uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             digits    = "0123456789"
             symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
@@ -43,7 +43,7 @@ Describe 'Rendder Password' {
         }
 
         It "get set of characters with single rule: <rule>"-TestCases @(
-            @{rule = "lowercase" }
+            @{rule = "Lowercase" }
             @{rule = "uppercase" }
             @{rule = "digits" }
             @{rule = "symbols" }
@@ -54,7 +54,7 @@ Describe 'Rendder Password' {
         }
 
         It "get set of characters with several rules" {
-            GetSetOfCharacters @("lowercase", "digits") | Should -BeExactly "abcdefghijklmnopqrstuvwxyz0123456789"
+            GetSetOfCharacters @("Lowercase", "digits") | Should -BeExactly "abcdefghijklmnopqrstuvwxyz0123456789"
         }
     }
 
@@ -86,7 +86,7 @@ Describe 'Rendder Password' {
         }
 
         It "get one char per rule with several rules" {
-            GetOneCharPerRule $Entropy @("lowercase", "digits") `
+            GetOneCharPerRule $Entropy @("Lowercase", "digits") `
             | Should -BeExactly "a0", "80845849188608437656228503146902068601204454199548659454"
         }
     }
@@ -102,7 +102,7 @@ Describe 'Rendder Password' {
         $PasswordProfile = @{
             site      = "example.org"
             login     = "contact@example.org"
-            lowercase = $True
+            Lowercase = $True
             digits    = $True
             length    = 14
             counter   = 1
@@ -133,7 +133,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
-                lowercase = $True
+                Lowercase = $True
                 uppercase = $True
                 digits    = $True
                 symbols   = $True
@@ -149,7 +149,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
-                lowercase = $True
+                Lowercase = $True
                 uppercase = $True
                 digits    = $True
                 symbols   = $false
@@ -165,7 +165,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
-                lowercase = $False
+                Lowercase = $False
                 uppercase = $False
                 digits    = $True
                 symbols   = $False
@@ -181,7 +181,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 site      = "example.org"
                 login     = "contact@example.org"
-                lowercase = $True
+                Lowercase = $True
                 uppercase = $True
                 digits    = $False
                 symbols   = $True
@@ -197,7 +197,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 site      = "site"
                 login     = "login"
-                lowercase = $True
+                Lowercase = $True
                 uppercase = $True
                 digits    = $True
                 symbols   = $True
