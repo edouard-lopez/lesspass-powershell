@@ -2,7 +2,7 @@
  
 # Lesspass-powershell
 
-> LessPass computes the same password given the same a `Site`, `login` and a `master password`
+> LessPass computes the same password given the same a `Site`, `Login` and a `master password`
 >
 > Privacy by default, Works offline, No sync, Visual fingerprint :closed_lock_with_key::heart::eyes:
 
@@ -15,7 +15,7 @@ PS> Install-Module -Name Lesspass
 ## Usage
 
 ```powershell
-PS> Get-LessPass "Site" "login" "masterpassword"
+PS> Get-LessPass "Site" "Login" "masterpassword"
 ```
 
 #### Help
@@ -29,7 +29,7 @@ PS> Get-LessPass -?
 ```powershell
 Get-LessPass
     -Site <String>
-    -login <String>
+    -Login <String>
     -master_password <String>
 
     [-Lowercase]

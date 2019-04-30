@@ -101,7 +101,7 @@ Describe 'Rendder Password' {
     Context "RenderPassword" {
         $PasswordProfile = @{
             Site      = "example.org"
-            login     = "contact@example.org"
+            Login     = "contact@example.org"
             Lowercase = $True
             Digits    = $True
             length    = 14
@@ -120,7 +120,7 @@ Describe 'Password' {
         It "Computes entropy as a lower case hexadecimal string" {
             $PasswordProfile = @{
                 Site      = "example.org"
-                login     = "contact@example.org"
+                Login     = "contact@example.org"
                 counter   = 1
             }
             $MasterPassword = "password"
@@ -132,7 +132,7 @@ Describe 'Password' {
         It 'with profile #1' {
             $PasswordProfile = @{
                 Site      = "example.org"
-                login     = "contact@example.org"
+                Login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
@@ -148,7 +148,7 @@ Describe 'Password' {
         It 'with profile #2' {
             $PasswordProfile = @{
                 Site      = "example.org"
-                login     = "contact@example.org"
+                Login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
@@ -164,7 +164,7 @@ Describe 'Password' {
         It 'with profile #3' {
             $PasswordProfile = @{
                 Site      = "example.org"
-                login     = "contact@example.org"
+                Login     = "contact@example.org"
                 Lowercase = $False
                 Uppercase = $False
                 Digits    = $True
@@ -180,7 +180,7 @@ Describe 'Password' {
         It 'with profile #4' {
             $PasswordProfile = @{
                 Site      = "example.org"
-                login     = "contact@example.org"
+                Login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $False
@@ -196,7 +196,7 @@ Describe 'Password' {
         It 'with profile NRT 328' {
             $PasswordProfile = @{
                 Site      = "site"
-                login     = "login"
+                Login     = "login"
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
