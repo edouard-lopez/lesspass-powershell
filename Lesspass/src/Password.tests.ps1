@@ -10,30 +10,30 @@ Describe 'Rendder Password' {
         It "ignore disabled rules" {
             $PasswordProfile = @{
                 Lowercase = $False
-                uppercase = $True
+                Uppercase = $True
                 digits    = $False
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("uppercase", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Uppercase", "symbols")
         }
 
         It "preserve rules order" {
             $PasswordProfile = @{
                 Lowercase = $True
-                uppercase = $True
+                Uppercase = $True
                 digits    = $True
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "uppercase", "digits", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "Uppercase", "digits", "symbols")
         }
     }
 
     Context "GetSetOfCharacters" {
         $CharacterSubsets = [ordered]@{
             Lowercase = "abcdefghijklmnopqrstuvwxyz"
-            uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             digits    = "0123456789"
             symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
         }
@@ -44,7 +44,7 @@ Describe 'Rendder Password' {
 
         It "get set of characters with single rule: <rule>"-TestCases @(
             @{rule = "Lowercase" }
-            @{rule = "uppercase" }
+            @{rule = "Uppercase" }
             @{rule = "digits" }
             @{rule = "symbols" }
          ) {
@@ -134,7 +134,7 @@ Describe 'Password' {
                 site      = "example.org"
                 login     = "contact@example.org"
                 Lowercase = $True
-                uppercase = $True
+                Uppercase = $True
                 digits    = $True
                 symbols   = $True
                 length    = 16
@@ -150,7 +150,7 @@ Describe 'Password' {
                 site      = "example.org"
                 login     = "contact@example.org"
                 Lowercase = $True
-                uppercase = $True
+                Uppercase = $True
                 digits    = $True
                 symbols   = $false
                 length    = 14
@@ -166,7 +166,7 @@ Describe 'Password' {
                 site      = "example.org"
                 login     = "contact@example.org"
                 Lowercase = $False
-                uppercase = $False
+                Uppercase = $False
                 digits    = $True
                 symbols   = $False
                 length    = 16
@@ -182,7 +182,7 @@ Describe 'Password' {
                 site      = "example.org"
                 login     = "contact@example.org"
                 Lowercase = $True
-                uppercase = $True
+                Uppercase = $True
                 digits    = $False
                 symbols   = $True
                 length    = 16
@@ -198,7 +198,7 @@ Describe 'Password' {
                 site      = "site"
                 login     = "login"
                 Lowercase = $True
-                uppercase = $True
+                Uppercase = $True
                 digits    = $True
                 symbols   = $True
                 length    = 16

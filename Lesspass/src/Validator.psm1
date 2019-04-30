@@ -4,7 +4,7 @@ function Confirm-Arguments {
         [string]$site,
         [Alias('l')][Switch]$Lowercase,
         [Alias('nl')][Switch]$noLowercase,
-        [Alias('u')][Switch]$uppercase,
+        [Alias('u')][Switch]$Uppercase,
         [Alias('nu')][Switch]$noUppercase,
         [Alias('d')][Switch]$digits,
         [Alias('nd')][Switch]$noDigits,
@@ -17,7 +17,7 @@ function Confirm-Arguments {
     if ($PSBoundParameters.Lowercase -and $PSBoundParameters.noLowercase) {
         throw "* Can't have opposite rule -L (or -Lowercase) and -NL (or -No-Lowercase) at the same time."
     }
-    if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
+    if ($PSBoundParameters.Uppercase -and $PSBoundParameters.noUppercase) {
         throw "* Can't have opposite rule -U (or -Uppercase) and -NU (or -No-Uppercase) at the same time."
     }
     if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
