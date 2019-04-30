@@ -32,7 +32,7 @@ Get-LessPass
     -login <String>
     -master_password <String>
 
-    [-lowercase]
+    [-Lowercase]
     [-uppercase]
     [-digits]
     [-symbols]

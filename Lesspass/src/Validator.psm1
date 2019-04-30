@@ -2,7 +2,7 @@
 function Confirm-Arguments {
     param(
         [string]$site,
-        [Alias('l')][Switch]$lowercase,
+        [Alias('l')][Switch]$Lowercase,
         [Alias('nl')][Switch]$noLowercase,
         [Alias('u')][Switch]$uppercase,
         [Alias('nu')][Switch]$noUppercase,
@@ -14,7 +14,7 @@ function Confirm-Arguments {
         [Switch]$Clipboard
     )
 
-    if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
+    if ($PSBoundParameters.Lowercase -and $PSBoundParameters.noLowercase) {
         throw "* Can't have opposite rule -L (or -Lowercase) and -NL (or -No-Lowercase) at the same time."
     }
     if ($PSBoundParameters.uppercase -and $PSBoundParameters.noUppercase) {
