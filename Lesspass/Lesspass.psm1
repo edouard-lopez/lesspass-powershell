@@ -13,7 +13,7 @@ function Get-LessPass {
         [Alias('nu')][Switch]$noUppercase,
         [Alias('nd')][Switch]$noDigits,
         [Alias('ns')][Switch]$noSymbols,
-        [ValidateRange(5, 35)]$length=16,
+        [ValidateRange(5, 35)]$Length=16,
         $Counter=1,
         # $prompt,
         # $Clipboard,
@@ -94,7 +94,7 @@ Remove Digits from password
 Remove Symbols from password
 
 .PARAMETER Length
-Password length (default: 16)
+Password Length (default: 16)
 
 .PARAMETER Counter
 Get a new version for an existing password (default: 1)
@@ -122,7 +122,7 @@ No Symbols shortcut
 .EXAMPLE
 lesspass Site Login masterpassword -D -L 8
 
-Only Digits and length of 8
+Only Digits and Length of 8
 
 # .EXAMPLE # is it applicable to Powershell?
 # LESSPASS_MASTER_PASSWORD="masterpassword" lesspass Site Login

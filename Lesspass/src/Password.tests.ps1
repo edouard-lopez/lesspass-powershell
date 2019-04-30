@@ -104,7 +104,7 @@ Describe 'Rendder Password' {
             Login     = "contact@example.org"
             Lowercase = $True
             Digits    = $True
-            length    = 14
+            Length    = 14
             Counter   = 1
         }
         $MasterPassword = "password"
@@ -137,7 +137,7 @@ Describe 'Password' {
                 Uppercase = $True
                 Digits    = $True
                 Symbols   = $True
-                length    = 16
+                Length    = 16
                 Counter   = 1
             }
             $MasterPassword = "password"
@@ -153,7 +153,7 @@ Describe 'Password' {
                 Uppercase = $True
                 Digits    = $True
                 Symbols   = $false
-                length    = 14
+                Length    = 14
                 Counter   = 2
             }
             $MasterPassword = "password"
@@ -169,7 +169,7 @@ Describe 'Password' {
                 Uppercase = $False
                 Digits    = $True
                 Symbols   = $False
-                length    = 16
+                Length    = 16
                 Counter   = 1
             }
             $MasterPassword = "password"
@@ -185,7 +185,7 @@ Describe 'Password' {
                 Uppercase = $True
                 Digits    = $False
                 Symbols   = $True
-                length    = 16
+                Length    = 16
                 Counter   = 1
             }
             $MasterPassword = "password"
@@ -201,7 +201,7 @@ Describe 'Password' {
                 Uppercase = $True
                 Digits    = $True
                 Symbols   = $True
-                length    = 16
+                Length    = 16
                 Counter   = 10
             }
             $MasterPassword = "test"
