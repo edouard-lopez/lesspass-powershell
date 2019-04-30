@@ -1,7 +1,7 @@
 
 function Confirm-Arguments {
     param(
-        [string]$site,
+        [string]$Site,
         [Alias('l')][Switch]$Lowercase,
         [Alias('nl')][Switch]$noLowercase,
         [Alias('u')][Switch]$Uppercase,
@@ -26,7 +26,7 @@ function Confirm-Arguments {
     if ($PSBoundParameters.Symbols -and $PSBoundParameters.noSymbols) {
         throw "* Can't have opposite rule -S (or -Symbols) and -NS (or -No-Symbols) at the same time."
     }
-    if (!$PSBoundParameters.site -and !$PSBoundParameters.prompt) {
+    if (!$PSBoundParameters.Site -and !$PSBoundParameters.prompt) {
         throw " * SITE is a required argument (unless in interactive mode with -Prompt)"
     }
     if ($PSBoundParameters.Clipboard) {

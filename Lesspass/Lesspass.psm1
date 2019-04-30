@@ -2,7 +2,7 @@ function Get-LessPass {
     [CmdletBinding()]
     [alias("lesspass")]
     param(
-        [string]$site,
+        [string]$Site,
         [string]$login,
         [string][Parameter(Mandatory=$true)]$master_password,
         [Alias('l')][Switch]$Lowercase,
@@ -49,7 +49,7 @@ Website: http://lesspass.com/
 Github:  https://github.com/lesspass/lesspass/          
 
 .DESCRIPTION
-LessPass computes a unique password using a site, login and a master password.
+LessPass computes a unique password using a Site, login and a master password.
 You don't need to sync a password vault across every device because LessPass works offline!
 
 LINUX REQUIREMENT: 
@@ -110,22 +110,22 @@ Get a new version for an existing password (default: 1)
 # lesspass version number
 
 .EXAMPLE
-lesspass site login masterpassword -noSymbols
+lesspass Site login masterpassword -noSymbols
 
 No Symbols
 
 .EXAMPLE
-lesspass site login masterpassword -L -U -D
+lesspass Site login masterpassword -L -U -D
 
 No Symbols shortcut
 
 .EXAMPLE
-lesspass site login masterpassword -D -L 8
+lesspass Site login masterpassword -D -L 8
 
 Only Digits and length of 8
 
 # .EXAMPLE # is it applicable to Powershell?
-# LESSPASS_MASTER_PASSWORD="masterpassword" lesspass site login
+# LESSPASS_MASTER_PASSWORD="masterpassword" lesspass Site login
 
 # Master password in env variable
 #>

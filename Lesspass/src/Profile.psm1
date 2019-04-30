@@ -1,6 +1,6 @@
 function New-Profile {
     param(
-        [string]$site,
+        [string]$Site,
         [string]$login,
         [string]$master_password,
         [Alias('l')][Switch]$Lowercase,
@@ -22,7 +22,7 @@ function New-Profile {
         Symbols   = !$noSymbols
         length    = $length
         counter   = $counter
-        site      = "$site"
+        Site      = "$Site"
         login     = "$login"
     }
 
