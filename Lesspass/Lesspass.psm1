@@ -16,7 +16,7 @@ function Get-LessPass {
         [ValidateRange(5, 35)]$length=16,
         $counter=1,
         # $prompt,
-        # $clipboard,
+        # $Clipboard,
         [Switch]$version
     )
     process {
