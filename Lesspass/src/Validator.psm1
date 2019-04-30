@@ -11,7 +11,7 @@ function Confirm-Arguments {
         [Alias('s')][Switch]$symbols,
         [Alias('ns')][Switch]$noSymbols,
         [Switch]$prompt,
-        [Switch]$clipboard
+        [Switch]$Clipboard
     )
 
     if ($PSBoundParameters.lowercase -and $PSBoundParameters.noLowercase) {
@@ -29,7 +29,7 @@ function Confirm-Arguments {
     if (!$PSBoundParameters.site -and !$PSBoundParameters.prompt) {
         throw " * SITE is a required argument (unless in interactive mode with -Prompt)"
     }
-    if ($PSBoundParameters.clipboard) {
+    if ($PSBoundParameters.Clipboard) {
         Get-SystemCopyCommand
     }
 }
