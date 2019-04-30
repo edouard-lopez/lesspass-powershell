@@ -6,7 +6,7 @@ Describe 'Profile' {
         It 'contains default <property>' -TestCases @(
             @{property = "Lowercase"},
             @{property = "Uppercase"},
-            @{property = "digits"},
+            @{property = "Digits"},
             @{property = "symbols"},
             @{property = "length"},
             @{property = "counter"},
@@ -52,8 +52,8 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
@@ -69,16 +69,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
         }
     }
     
-    Context "Create profile with digits" {
-        $profile = New-Profile "site.org" -digits
+    Context "Create profile with Digits" {
+        $profile = New-Profile "site.org" -Digits
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -86,8 +86,8 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
@@ -103,8 +103,8 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
@@ -120,16 +120,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
         }
     }
     
-    Context "Create profile with Lowercase and digits" {
-        $profile = New-Profile "site.org" -Lowercase -digits
+    Context "Create profile with Lowercase and Digits" {
+        $profile = New-Profile "site.org" -Lowercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -137,8 +137,8 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
@@ -154,16 +154,16 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with Uppercase and digits" {
-        $profile = New-Profile "site.org" -Uppercase -digits
+    Context "Create profile with Uppercase and Digits" {
+        $profile = New-Profile "site.org" -Uppercase -Digits
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -171,8 +171,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
@@ -188,16 +188,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with digits and symbols" {
-        $profile = New-Profile "site.org" -digits -symbols
+    Context "Create profile with Digits and symbols" {
+        $profile = New-Profile "site.org" -Digits -symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -205,16 +205,16 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with Lowercase, Uppercase and digits" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase -digits
+    Context "Create profile with Lowercase, Uppercase and Digits" {
+        $profile = New-Profile "site.org" -Lowercase -Uppercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -222,8 +222,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false
@@ -239,16 +239,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with Uppercase, digits and symbols" {
-        $profile = New-Profile "site.org" -Uppercase -digits -symbols
+    Context "Create profile with Uppercase, Digits and symbols" {
+        $profile = New-Profile "site.org" -Uppercase -Digits -symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -256,16 +256,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with Lowercase, Uppercase, digits and symbols" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase -digits -symbols
+    Context "Create profile with Lowercase, Uppercase, Digits and symbols" {
+        $profile = New-Profile "site.org" -Lowercase -Uppercase -Digits -symbols
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -273,16 +273,16 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with symbols, Uppercase, Lowercase and digits" {
-        $profile = New-Profile "site.org" -symbols -Uppercase -Lowercase -digits
+    Context "Create profile with symbols, Uppercase, Lowercase and Digits" {
+        $profile = New-Profile "site.org" -symbols -Uppercase -Lowercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -290,8 +290,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
@@ -307,8 +307,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
@@ -324,15 +324,15 @@ Describe 'Profile' {
         It 'disable Uppercase' {
             $profile.Uppercase | Should -Be $false
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
         }
     }
 
-    Context "Create profile with no digits" {
+    Context "Create profile with no Digits" {
         $profile = New-Profile "site.org" -noDigits
 
         It 'enable Lowercase' {
@@ -341,8 +341,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'disable digits' {
-            $profile.digits | Should -Be $false
+        It 'disable Digits' {
+            $profile.Digits | Should -Be $false
         }
         It 'enable symbols' {
             $profile.symbols | Should -Be $true
@@ -358,8 +358,8 @@ Describe 'Profile' {
         It 'enable Uppercase' {
             $profile.Uppercase | Should -Be $true
         }
-        It 'enable digits' {
-            $profile.digits | Should -Be $true
+        It 'enable Digits' {
+            $profile.Digits | Should -Be $true
         }
         It 'disable symbols' {
             $profile.symbols | Should -Be $false

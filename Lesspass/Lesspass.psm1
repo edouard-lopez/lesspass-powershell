@@ -7,7 +7,7 @@ function Get-LessPass {
         [string][Parameter(Mandatory=$true)]$master_password,
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
-        [Alias('d')][Switch]$digits,
+        [Alias('d')][Switch]$Digits,
         [Alias('s')][Switch]$symbols,
         [Alias('nl')][Switch]$noLowercase,
         [Alias('nu')][Switch]$noUppercase,
@@ -76,7 +76,7 @@ Add Lowercase in password
 Add Uppercase in password
 
 .PARAMETER Digits
-Add digits in password
+Add Digits in password
 
 .PARAMETER Symbols
 Add symbols in password
@@ -88,7 +88,7 @@ Remove Lowercase from password
 Remove Uppercase from password
 
 .PARAMETER NoDigits
-Remove digits from password
+Remove Digits from password
 
 .PARAMETER NoSymbols
 Remove symbols from password
@@ -122,7 +122,7 @@ No symbols shortcut
 .EXAMPLE
 lesspass site login masterpassword -D -L 8
 
-Only digits and length of 8
+Only Digits and length of 8
 
 # .EXAMPLE # is it applicable to Powershell?
 # LESSPASS_MASTER_PASSWORD="masterpassword" lesspass site login

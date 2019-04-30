@@ -11,7 +11,7 @@ Describe 'Rendder Password' {
             $PasswordProfile = @{
                 Lowercase = $False
                 Uppercase = $True
-                digits    = $False
+                Digits    = $False
                 symbols   = $True
             }
             
@@ -22,11 +22,11 @@ Describe 'Rendder Password' {
             $PasswordProfile = @{
                 Lowercase = $True
                 Uppercase = $True
-                digits    = $True
+                Digits    = $True
                 symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "Uppercase", "digits", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "Uppercase", "Digits", "symbols")
         }
     }
 
@@ -34,7 +34,7 @@ Describe 'Rendder Password' {
         $CharacterSubsets = [ordered]@{
             Lowercase = "abcdefghijklmnopqrstuvwxyz"
             Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            digits    = "0123456789"
+            Digits    = "0123456789"
             symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
         }
 
@@ -45,7 +45,7 @@ Describe 'Rendder Password' {
         It "get set of characters with single rule: <rule>"-TestCases @(
             @{rule = "Lowercase" }
             @{rule = "Uppercase" }
-            @{rule = "digits" }
+            @{rule = "Digits" }
             @{rule = "symbols" }
          ) {
             param($rule)
@@ -54,7 +54,7 @@ Describe 'Rendder Password' {
         }
 
         It "get set of characters with several rules" {
-            GetSetOfCharacters @("Lowercase", "digits") | Should -BeExactly "abcdefghijklmnopqrstuvwxyz0123456789"
+            GetSetOfCharacters @("Lowercase", "Digits") | Should -BeExactly "abcdefghijklmnopqrstuvwxyz0123456789"
         }
     }
 
@@ -86,7 +86,7 @@ Describe 'Rendder Password' {
         }
 
         It "get one char per rule with several rules" {
-            GetOneCharPerRule $Entropy @("Lowercase", "digits") `
+            GetOneCharPerRule $Entropy @("Lowercase", "Digits") `
             | Should -BeExactly "a0", "80845849188608437656228503146902068601204454199548659454"
         }
     }
@@ -103,7 +103,7 @@ Describe 'Rendder Password' {
             site      = "example.org"
             login     = "contact@example.org"
             Lowercase = $True
-            digits    = $True
+            Digits    = $True
             length    = 14
             counter   = 1
         }
@@ -135,7 +135,7 @@ Describe 'Password' {
                 login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
-                digits    = $True
+                Digits    = $True
                 symbols   = $True
                 length    = 16
                 counter   = 1
@@ -151,7 +151,7 @@ Describe 'Password' {
                 login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
-                digits    = $True
+                Digits    = $True
                 symbols   = $false
                 length    = 14
                 counter   = 2
@@ -167,7 +167,7 @@ Describe 'Password' {
                 login     = "contact@example.org"
                 Lowercase = $False
                 Uppercase = $False
-                digits    = $True
+                Digits    = $True
                 symbols   = $False
                 length    = 16
                 counter   = 1
@@ -183,7 +183,7 @@ Describe 'Password' {
                 login     = "contact@example.org"
                 Lowercase = $True
                 Uppercase = $True
-                digits    = $False
+                Digits    = $False
                 symbols   = $True
                 length    = 16
                 counter   = 1
@@ -199,7 +199,7 @@ Describe 'Password' {
                 login     = "login"
                 Lowercase = $True
                 Uppercase = $True
-                digits    = $True
+                Digits    = $True
                 symbols   = $True
                 length    = 16
                 counter   = 10
