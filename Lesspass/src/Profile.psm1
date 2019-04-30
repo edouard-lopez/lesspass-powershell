@@ -13,7 +13,7 @@ function New-Profile {
         [Alias('ns')][Switch]$noSymbols,
         $Length=16,
         $Counter=1
-        # $prompt=$true
+        # $Prompt=$true
     )
     $profile = @{
         Lowercase = !$noLowercase
