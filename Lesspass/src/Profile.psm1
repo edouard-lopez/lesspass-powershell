@@ -1,7 +1,7 @@
 function New-Profile {
     param(
         [string]$Site,
-        [string]$login,
+        [string]$Login,
         [string]$master_password,
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
@@ -23,7 +23,7 @@ function New-Profile {
         length    = $length
         counter   = $counter
         Site      = "$Site"
-        login     = "$login"
+        Login     = "$Login"
     }
 
     if ($Lowercase -or $Uppercase -or $Digits -or $Symbols) {

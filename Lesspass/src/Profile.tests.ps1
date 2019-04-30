@@ -1,7 +1,7 @@
 Import-Module $PSScriptRoot/Profile.psm1 -Force  # force code to be reloaded
 Describe 'Profile' {
     Context "Create default profile" {
-        $profile = New-Profile "Site.org" "my-login"
+        $profile = New-Profile "Site.org" "my-Login"
 
         It 'contains default <property>' -TestCases @(
             @{property = "Lowercase"},
@@ -11,7 +11,7 @@ Describe 'Profile' {
             @{property = "length"},
             @{property = "counter"},
             @{property = "Site"},
-            @{property = "login"}
+            @{property = "Login"}
         ) {
             param($property)
             $profile.keys | Should -Contain $property
@@ -20,15 +20,15 @@ Describe 'Profile' {
         It 'contains given `Site` value' {
             $profile.Site | Should -Be 'Site.org'
         }
-        It 'contains given `login` value' {
-            $profile.login | Should -Be 'my-login'
+        It 'contains given `Login` value' {
+            $profile.Login | Should -Be 'my-Login'
         }
     }
 
-    It 'create profile without login parameter' {
+    It 'create profile without Login parameter' {
         $profile = New-Profile "Site.org"
 
-        $profile.login | Should -Be ''
+        $profile.Login | Should -Be ''
     }
 
     It 'create profile with a given length' {
