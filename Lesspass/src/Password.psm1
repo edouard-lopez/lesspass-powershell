@@ -27,7 +27,7 @@ function CalcEntropy {
         [String]$MasterPassword
     )
     process {
-        $Salt = $PasswordProfile.site + $PasswordProfile.login + [System.Convert]::ToString($PasswordProfile.counter, 16)
+        $Salt = $PasswordProfile.Site + $PasswordProfile.login + [System.Convert]::ToString($PasswordProfile.counter, 16)
         $SaltAsBytes = [System.Text.UTF8Encoding]::UTF8.GetBytes($Salt)
         $HashAlgorithm = [System.Security.Cryptography.HMACSHA256]::new()
         $MasterPasswordAsBytes = [System.Text.UTF8Encoding]::UTF8.GetBytes($MasterPassword)

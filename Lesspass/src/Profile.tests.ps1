@@ -1,7 +1,7 @@
 Import-Module $PSScriptRoot/Profile.psm1 -Force  # force code to be reloaded
 Describe 'Profile' {
     Context "Create default profile" {
-        $profile = New-Profile "site.org" "my-login"
+        $profile = New-Profile "Site.org" "my-login"
 
         It 'contains default <property>' -TestCases @(
             @{property = "Lowercase"},
@@ -10,15 +10,15 @@ Describe 'Profile' {
             @{property = "Symbols"},
             @{property = "length"},
             @{property = "counter"},
-            @{property = "site"},
+            @{property = "Site"},
             @{property = "login"}
         ) {
             param($property)
             $profile.keys | Should -Contain $property
         }
 
-        It 'contains given `site` value' {
-            $profile.site | Should -Be 'site.org'
+        It 'contains given `Site` value' {
+            $profile.Site | Should -Be 'Site.org'
         }
         It 'contains given `login` value' {
             $profile.login | Should -Be 'my-login'
@@ -26,25 +26,25 @@ Describe 'Profile' {
     }
 
     It 'create profile without login parameter' {
-        $profile = New-Profile "site.org"
+        $profile = New-Profile "Site.org"
 
         $profile.login | Should -Be ''
     }
 
     It 'create profile with a given length' {
-        $profile = New-Profile "site.org" -length 8
+        $profile = New-Profile "Site.org" -length 8
 
         $profile.Length | Should -Be 8
     }
 
     It 'create profile with a given counter' {
-        $profile = New-Profile "site.org" -counter 2
+        $profile = New-Profile "Site.org" -counter 2
 
         $profile.counter | Should -Be 2
     }
 
     Context "Create profile with Lowercase" {
-        $profile = New-Profile "site.org" -Lowercase
+        $profile = New-Profile "Site.org" -Lowercase
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -61,7 +61,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Uppercase" {
-        $profile = New-Profile "site.org" -Uppercase
+        $profile = New-Profile "Site.org" -Uppercase
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -78,7 +78,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Digits" {
-        $profile = New-Profile "site.org" -Digits
+        $profile = New-Profile "Site.org" -Digits
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -95,7 +95,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Symbols" {
-        $profile = New-Profile "site.org" -Symbols
+        $profile = New-Profile "Site.org" -Symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -112,7 +112,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Lowercase and Uppercase" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase
+        $profile = New-Profile "Site.org" -Lowercase -Uppercase
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -129,7 +129,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Lowercase and Digits" {
-        $profile = New-Profile "site.org" -Lowercase -Digits
+        $profile = New-Profile "Site.org" -Lowercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -146,7 +146,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Lowercase and Symbols" {
-        $profile = New-Profile "site.org" -Lowercase -Symbols
+        $profile = New-Profile "Site.org" -Lowercase -Symbols
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -163,7 +163,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Uppercase and Digits" {
-        $profile = New-Profile "site.org" -Uppercase -Digits
+        $profile = New-Profile "Site.org" -Uppercase -Digits
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -180,7 +180,7 @@ Describe 'Profile' {
     }
     
     Context "Create profile with Uppercase and Symbols" {
-        $profile = New-Profile "site.org" -Uppercase -Symbols
+        $profile = New-Profile "Site.org" -Uppercase -Symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -197,7 +197,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Digits and Symbols" {
-        $profile = New-Profile "site.org" -Digits -Symbols
+        $profile = New-Profile "Site.org" -Digits -Symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -214,7 +214,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Lowercase, Uppercase and Digits" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase -Digits
+        $profile = New-Profile "Site.org" -Lowercase -Uppercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -231,7 +231,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Lowercase, Uppercase and Symbols" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase -Symbols
+        $profile = New-Profile "Site.org" -Lowercase -Uppercase -Symbols
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -248,7 +248,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Uppercase, Digits and Symbols" {
-        $profile = New-Profile "site.org" -Uppercase -Digits -Symbols
+        $profile = New-Profile "Site.org" -Uppercase -Digits -Symbols
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -265,7 +265,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Lowercase, Uppercase, Digits and Symbols" {
-        $profile = New-Profile "site.org" -Lowercase -Uppercase -Digits -Symbols
+        $profile = New-Profile "Site.org" -Lowercase -Uppercase -Digits -Symbols
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -282,7 +282,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with Symbols, Uppercase, Lowercase and Digits" {
-        $profile = New-Profile "site.org" -Symbols -Uppercase -Lowercase -Digits
+        $profile = New-Profile "Site.org" -Symbols -Uppercase -Lowercase -Digits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -299,7 +299,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with no Lowercase" {
-        $profile = New-Profile "site.org" -noLowercase
+        $profile = New-Profile "Site.org" -noLowercase
 
         It 'disable Lowercase' {
             $profile.Lowercase | Should -Be $false
@@ -316,7 +316,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with no Uppercase" {
-        $profile = New-Profile "site.org" -noUppercase
+        $profile = New-Profile "Site.org" -noUppercase
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -333,7 +333,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with no Digits" {
-        $profile = New-Profile "site.org" -noDigits
+        $profile = New-Profile "Site.org" -noDigits
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
@@ -350,7 +350,7 @@ Describe 'Profile' {
     }
 
     Context "Create profile with no Symbols" {
-        $profile = New-Profile "site.org" -noSymbols
+        $profile = New-Profile "Site.org" -noSymbols
 
         It 'enable Lowercase' {
             $profile.Lowercase | Should -Be $true
