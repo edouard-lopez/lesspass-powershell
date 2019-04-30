@@ -2,7 +2,7 @@ function New-Profile {
     param(
         [string]$Site,
         [string]$Login,
-        [string]$master_password,
+        [string]$MasterPassword,
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
         [Alias('d')][Switch]$Digits,

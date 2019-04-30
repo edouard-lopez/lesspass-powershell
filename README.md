@@ -30,7 +30,7 @@ PS> Get-LessPass -?
 Get-LessPass
     -Site <String>
     -Login <String>
-    -master_password <String>
+    -MasterPassword <String>
 
     [-Lowercase]
     [-Uppercase]
