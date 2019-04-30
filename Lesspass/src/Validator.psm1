@@ -8,7 +8,7 @@ function Confirm-Arguments {
         [Alias('nu')][Switch]$noUppercase,
         [Alias('d')][Switch]$Digits,
         [Alias('nd')][Switch]$noDigits,
-        [Alias('s')][Switch]$symbols,
+        [Alias('s')][Switch]$Symbols,
         [Alias('ns')][Switch]$noSymbols,
         [Switch]$prompt,
         [Switch]$Clipboard
@@ -23,7 +23,7 @@ function Confirm-Arguments {
     if ($PSBoundParameters.Digits -and $PSBoundParameters.noDigits) {
         throw "* Can't have opposite rule -D (or -Digits) and -ND (or -No-Digits) at the same time."
     }
-    if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {
+    if ($PSBoundParameters.Symbols -and $PSBoundParameters.noSymbols) {
         throw "* Can't have opposite rule -S (or -Symbols) and -NS (or -No-Symbols) at the same time."
     }
     if (!$PSBoundParameters.site -and !$PSBoundParameters.prompt) {
