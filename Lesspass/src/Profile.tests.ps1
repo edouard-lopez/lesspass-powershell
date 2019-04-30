@@ -8,7 +8,7 @@ Describe 'Profile' {
             @{property = "Uppercase"},
             @{property = "Digits"},
             @{property = "Symbols"},
-            @{property = "length"},
+            @{property = "Length"},
             @{property = "Counter"},
             @{property = "Site"},
             @{property = "Login"}
@@ -31,8 +31,8 @@ Describe 'Profile' {
         $profile.Login | Should -Be ''
     }
 
-    It 'create profile with a given length' {
-        $profile = New-Profile "Site.org" -length 8
+    It 'create profile with a given Length' {
+        $profile = New-Profile "Site.org" -Length 8
 
         $profile.Length | Should -Be 8
     }

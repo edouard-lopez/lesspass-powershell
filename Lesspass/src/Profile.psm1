@@ -11,7 +11,7 @@ function New-Profile {
         [Alias('nu')][Switch]$noUppercase,
         [Alias('nd')][Switch]$noDigits,
         [Alias('ns')][Switch]$noSymbols,
-        $length=16,
+        $Length=16,
         $Counter=1
         # $prompt=$true
     )
@@ -20,7 +20,7 @@ function New-Profile {
         Uppercase = !$noUppercase
         Digits    = !$noDigits
         Symbols   = !$noSymbols
-        length    = $length
+        Length    = $Length
         Counter   = $Counter
         Site      = "$Site"
         Login     = "$Login"

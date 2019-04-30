@@ -40,7 +40,7 @@ Get-LessPass
     [-noUppercase]
     [-noDigits]
     [-noSymbols]
-    [[-length] <Object>]
+    [[-Length] <Object>]
     [[-Counter] <Object>]
 
     [-version]
