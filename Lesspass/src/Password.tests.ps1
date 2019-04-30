@@ -12,10 +12,10 @@ Describe 'Rendder Password' {
                 Lowercase = $False
                 Uppercase = $True
                 Digits    = $False
-                symbols   = $True
+                Symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("Uppercase", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Uppercase", "Symbols")
         }
 
         It "preserve rules order" {
@@ -23,10 +23,10 @@ Describe 'Rendder Password' {
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
-                symbols   = $True
+                Symbols   = $True
             }
             
-            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "Uppercase", "Digits", "symbols")
+            GetConfiguredRules $PasswordProfile | Should -Be @("Lowercase", "Uppercase", "Digits", "Symbols")
         }
     }
 
@@ -35,7 +35,7 @@ Describe 'Rendder Password' {
             Lowercase = "abcdefghijklmnopqrstuvwxyz"
             Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             Digits    = "0123456789"
-            symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
+            Symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
         }
 
         It "get set of characters without rule" {
@@ -46,7 +46,7 @@ Describe 'Rendder Password' {
             @{rule = "Lowercase" }
             @{rule = "Uppercase" }
             @{rule = "Digits" }
-            @{rule = "symbols" }
+            @{rule = "Symbols" }
          ) {
             param($rule)
             GetSetOfCharacters @($rule) | Should -BeExactly $CharacterSubsets.$rule
@@ -136,7 +136,7 @@ Describe 'Password' {
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
-                symbols   = $True
+                Symbols   = $True
                 length    = 16
                 counter   = 1
             }
@@ -152,7 +152,7 @@ Describe 'Password' {
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
-                symbols   = $false
+                Symbols   = $false
                 length    = 14
                 counter   = 2
             }
@@ -168,7 +168,7 @@ Describe 'Password' {
                 Lowercase = $False
                 Uppercase = $False
                 Digits    = $True
-                symbols   = $False
+                Symbols   = $False
                 length    = 16
                 counter   = 1
             }
@@ -184,7 +184,7 @@ Describe 'Password' {
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $False
-                symbols   = $True
+                Symbols   = $True
                 length    = 16
                 counter   = 1
             }
@@ -200,7 +200,7 @@ Describe 'Password' {
                 Lowercase = $True
                 Uppercase = $True
                 Digits    = $True
-                symbols   = $True
+                Symbols   = $True
                 length    = 16
                 counter   = 10
             }

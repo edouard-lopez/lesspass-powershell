@@ -8,7 +8,7 @@ function Get-LessPass {
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
         [Alias('d')][Switch]$Digits,
-        [Alias('s')][Switch]$symbols,
+        [Alias('s')][Switch]$Symbols,
         [Alias('nl')][Switch]$noLowercase,
         [Alias('nu')][Switch]$noUppercase,
         [Alias('nd')][Switch]$noDigits,
@@ -79,7 +79,7 @@ Add Uppercase in password
 Add Digits in password
 
 .PARAMETER Symbols
-Add symbols in password
+Add Symbols in password
 
 .PARAMETER NoLowercase
 Remove Lowercase from password
@@ -91,7 +91,7 @@ Remove Uppercase from password
 Remove Digits from password
 
 .PARAMETER NoSymbols
-Remove symbols from password
+Remove Symbols from password
 
 .PARAMETER Length
 Password length (default: 16)
@@ -112,12 +112,12 @@ Get a new version for an existing password (default: 1)
 .EXAMPLE
 lesspass site login masterpassword -noSymbols
 
-No symbols
+No Symbols
 
 .EXAMPLE
 lesspass site login masterpassword -L -U -D
 
-No symbols shortcut
+No Symbols shortcut
 
 .EXAMPLE
 lesspass site login masterpassword -D -L 8

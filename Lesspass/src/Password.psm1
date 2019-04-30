@@ -2,7 +2,7 @@ $CharacterSubsets = [ordered]@{
     Lowercase = "abcdefghijklmnopqrstuvwxyz"
     Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     Digits    = "0123456789"
-    symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
+    Symbols   = "!`"#$%&'()*+,-./:;<=>?@[`\]^_``{|}~"
 }
 
 function PBKDF2_by_medo64 {
@@ -45,7 +45,7 @@ function GetConfiguredRules {
         $PasswordProfile
     )
     process{
-        $Rules = @("Lowercase", "Uppercase", "Digits", "symbols")
+        $Rules = @("Lowercase", "Uppercase", "Digits", "Symbols")
 
         return $Rules | Where-Object { $_ -in $PasswordProfile.Keys -and $PasswordProfile.$_ }
     }
@@ -53,7 +53,7 @@ function GetConfiguredRules {
 
 function GetSetOfCharacters {
     param(
-        [ValidateSet('Lowercase','Uppercase','Digits','symbols')]
+        [ValidateSet('Lowercase','Uppercase','Digits','Symbols')]
             [string[]]$Rules=@()
     )
     process{
@@ -92,7 +92,7 @@ function ConsumeEntropy {
 function GetOneCharPerRule {
     param(
         [BigInt]$Entropy, 
-        [ValidateSet('Lowercase','Uppercase','Digits','symbols')]
+        [ValidateSet('Lowercase','Uppercase','Digits','Symbols')]
             [string[]]$Rules=@()
     )
     process{

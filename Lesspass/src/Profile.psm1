@@ -6,7 +6,7 @@ function New-Profile {
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
         [Alias('d')][Switch]$Digits,
-        [Alias('s')][Switch]$symbols,
+        [Alias('s')][Switch]$Symbols,
         [Alias('nl')][Switch]$noLowercase,
         [Alias('nu')][Switch]$noUppercase,
         [Alias('nd')][Switch]$noDigits,
@@ -19,18 +19,18 @@ function New-Profile {
         Lowercase = !$noLowercase
         Uppercase = !$noUppercase
         Digits    = !$noDigits
-        symbols   = !$noSymbols
+        Symbols   = !$noSymbols
         length    = $length
         counter   = $counter
         site      = "$site"
         login     = "$login"
     }
 
-    if ($Lowercase -or $Uppercase -or $Digits -or $symbols) {
+    if ($Lowercase -or $Uppercase -or $Digits -or $Symbols) {
         $profile.Lowercase = $Lowercase
         $profile.Uppercase = $Uppercase
         $profile.Digits = $Digits
-        $profile.symbols = $symbols
+        $profile.Symbols = $Symbols
            
     }
     return $profile
