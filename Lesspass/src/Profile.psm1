@@ -12,7 +12,7 @@ function New-Profile {
         [Alias('nd')][Switch]$noDigits,
         [Alias('ns')][Switch]$noSymbols,
         $length=16,
-        $counter=1
+        $Counter=1
         # $prompt=$true
     )
     $profile = @{
@@ -21,7 +21,7 @@ function New-Profile {
         Digits    = !$noDigits
         Symbols   = !$noSymbols
         length    = $length
-        counter   = $counter
+        Counter   = $Counter
         Site      = "$Site"
         Login     = "$Login"
     }

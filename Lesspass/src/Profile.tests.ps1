@@ -9,7 +9,7 @@ Describe 'Profile' {
             @{property = "Digits"},
             @{property = "Symbols"},
             @{property = "length"},
-            @{property = "counter"},
+            @{property = "Counter"},
             @{property = "Site"},
             @{property = "Login"}
         ) {
@@ -37,10 +37,10 @@ Describe 'Profile' {
         $profile.Length | Should -Be 8
     }
 
-    It 'create profile with a given counter' {
-        $profile = New-Profile "Site.org" -counter 2
+    It 'create profile with a given Counter' {
+        $profile = New-Profile "Site.org" -Counter 2
 
-        $profile.counter | Should -Be 2
+        $profile.Counter | Should -Be 2
     }
 
     Context "Create profile with Lowercase" {

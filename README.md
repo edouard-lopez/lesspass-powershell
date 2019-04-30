@@ -41,7 +41,7 @@ Get-LessPass
     [-noDigits]
     [-noSymbols]
     [[-length] <Object>]
-    [[-counter] <Object>]
+    [[-Counter] <Object>]
 
     [-version]
     [<CommonParameters>]

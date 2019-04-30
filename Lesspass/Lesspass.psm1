@@ -14,7 +14,7 @@ function Get-LessPass {
         [Alias('nd')][Switch]$noDigits,
         [Alias('ns')][Switch]$noSymbols,
         [ValidateRange(5, 35)]$length=16,
-        $counter=1,
+        $Counter=1,
         # $prompt,
         # $Clipboard,
         [Switch]$version

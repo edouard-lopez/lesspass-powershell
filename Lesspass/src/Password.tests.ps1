@@ -105,7 +105,7 @@ Describe 'Rendder Password' {
             Lowercase = $True
             Digits    = $True
             length    = 14
-            counter   = 1
+            Counter   = 1
         }
         $MasterPassword = "password"
         $Entropy = CalcEntropy $PasswordProfile $MasterPassword
@@ -121,7 +121,7 @@ Describe 'Password' {
             $PasswordProfile = @{
                 Site      = "example.org"
                 Login     = "contact@example.org"
-                counter   = 1
+                Counter   = 1
             }
             $MasterPassword = "password"
 
@@ -138,7 +138,7 @@ Describe 'Password' {
                 Digits    = $True
                 Symbols   = $True
                 length    = 16
-                counter   = 1
+                Counter   = 1
             }
             $MasterPassword = "password"
 
@@ -154,7 +154,7 @@ Describe 'Password' {
                 Digits    = $True
                 Symbols   = $false
                 length    = 14
-                counter   = 2
+                Counter   = 2
             }
             $MasterPassword = "password"
             
@@ -170,7 +170,7 @@ Describe 'Password' {
                 Digits    = $True
                 Symbols   = $False
                 length    = 16
-                counter   = 1
+                Counter   = 1
             }
             $MasterPassword = "password"
 
@@ -186,7 +186,7 @@ Describe 'Password' {
                 Digits    = $False
                 Symbols   = $True
                 length    = 16
-                counter   = 1
+                Counter   = 1
             }
             $MasterPassword = "password"
 
@@ -202,7 +202,7 @@ Describe 'Password' {
                 Digits    = $True
                 Symbols   = $True
                 length    = 16
-                counter   = 10
+                Counter   = 10
             }
             $MasterPassword = "test"
 
