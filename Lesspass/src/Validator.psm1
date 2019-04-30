@@ -6,7 +6,7 @@ function Confirm-Arguments {
         [Alias('nl')][Switch]$noLowercase,
         [Alias('u')][Switch]$Uppercase,
         [Alias('nu')][Switch]$noUppercase,
-        [Alias('d')][Switch]$digits,
+        [Alias('d')][Switch]$Digits,
         [Alias('nd')][Switch]$noDigits,
         [Alias('s')][Switch]$symbols,
         [Alias('ns')][Switch]$noSymbols,
@@ -20,7 +20,7 @@ function Confirm-Arguments {
     if ($PSBoundParameters.Uppercase -and $PSBoundParameters.noUppercase) {
         throw "* Can't have opposite rule -U (or -Uppercase) and -NU (or -No-Uppercase) at the same time."
     }
-    if ($PSBoundParameters.digits -and $PSBoundParameters.noDigits) {
+    if ($PSBoundParameters.Digits -and $PSBoundParameters.noDigits) {
         throw "* Can't have opposite rule -D (or -Digits) and -ND (or -No-Digits) at the same time."
     }
     if ($PSBoundParameters.symbols -and $PSBoundParameters.noSymbols) {

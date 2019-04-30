@@ -34,7 +34,7 @@ Get-LessPass
 
     [-Lowercase]
     [-Uppercase]
-    [-digits]
+    [-Digits]
     [-symbols]
     [-noLowercase]
     [-noUppercase]
