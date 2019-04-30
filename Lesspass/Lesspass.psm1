@@ -4,7 +4,7 @@ function Get-LessPass {
     param(
         [string]$Site,
         [string]$Login,
-        [string][Parameter(Mandatory=$true)]$master_password,
+        [string][Parameter(Mandatory=$true)]$MasterPassword,
         [Alias('l')][Switch]$Lowercase,
         [Alias('u')][Switch]$Uppercase,
         [Alias('d')][Switch]$Digits,
@@ -32,9 +32,9 @@ function Get-LessPass {
         
         $PasswordProfile = New-Profile @PSBoundParameters
         
-        return GeneratePassword $PasswordProfile $master_password
+        return GeneratePassword $PasswordProfile $MasterPassword
         # todo: if -Prompt flag is present copy to clipboard
-        # todo: request master_password if not provided
+        # todo: request MasterPassword if not provided
         # todo: if -Clipboard flag is present copy to clipboard
     }
     end {
