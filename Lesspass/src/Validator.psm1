@@ -10,7 +10,7 @@ function Confirm-Arguments {
         [Alias('nd')][Switch]$noDigits,
         [Alias('s')][Switch]$Symbols,
         [Alias('ns')][Switch]$noSymbols,
-        [Switch]$prompt,
+        [Switch]$Prompt,
         [Switch]$Clipboard
     )
 
@@ -26,7 +26,7 @@ function Confirm-Arguments {
     if ($PSBoundParameters.Symbols -and $PSBoundParameters.noSymbols) {
         throw "* Can't have opposite rule -S (or -Symbols) and -NS (or -No-Symbols) at the same time."
     }
-    if (!$PSBoundParameters.Site -and !$PSBoundParameters.prompt) {
+    if (!$PSBoundParameters.Site -and !$PSBoundParameters.Prompt) {
         throw " * SITE is a required argument (unless in interactive mode with -Prompt)"
     }
     if ($PSBoundParameters.Clipboard) {

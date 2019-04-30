@@ -15,7 +15,7 @@ function Get-LessPass {
         [Alias('ns')][Switch]$noSymbols,
         [ValidateRange(5, 35)]$Length=16,
         $Counter=1,
-        # $prompt,
+        # $Prompt,
         # $Clipboard,
         [Switch]$version
     )
