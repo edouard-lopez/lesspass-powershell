@@ -70,31 +70,31 @@ Master password used in password generation
 default to LESSPASS_MASTER_PASSWORD env variable or prompt
 
 .PARAMETER Lowercase
-Add Lowercase in password
+Add lowercase in password
 
 .PARAMETER Uppercase
-Add Uppercase in password
+Add uppercase in password
 
 .PARAMETER Digits
-Add Digits in password
+Add digits in password
 
 .PARAMETER Symbols
-Add Symbols in password
+Add symbols in password
 
 .PARAMETER NoLowercase
-Remove Lowercase from password
+Remove lowercase from password
 
 .PARAMETER NoUppercase
-Remove Uppercase from password
+Remove uppercase from password
 
 .PARAMETER NoDigits
-Remove Digits from password
+Remove digits from password
 
 .PARAMETER NoSymbols
-Remove Symbols from password
+Remove symbols from password
 
 .PARAMETER Length
-Password Length (default: 16)
+Password length (default: 16)
 
 .PARAMETER Counter
 Get a new version for an existing password (default: 1)
