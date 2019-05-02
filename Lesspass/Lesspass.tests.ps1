@@ -12,7 +12,7 @@ Describe 'Get-LessPass' {
         }
 
         It 'Prompt for MasterPassword when missing' {
-            (Get-Command Get-LessPass).Parameters['master_password'].Attributes.Mandatory | Should -Be $true
+            (Get-Command Get-LessPass).Parameters['MasterPassword'].Attributes.Mandatory | Should -Be $true
         }
     }
 }
