@@ -1,6 +1,6 @@
 > ##### ✋ Psst! Create [issue on the lesspass/lesspass](https://github.com/lesspass/lesspass/issues/new) repo as I will [merge](https://github.com/lesspass/lesspass/issues/407) into it.
  
-# Lesspass-powershell
+# Lesspass-powershell [![Build Status](https://travis-ci.org/edouard-lopez/lesspass-powershell.svg?branch=master)](https://travis-ci.org/edouard-lopez/lesspass-powershell)
 
 > LessPass computes the same password given the same a `Site`, `Login` and a `master password`
 >
